@@ -37,12 +37,12 @@ The installation is pretty easy !
 Just drap & drop the "*npc_rpname*" folder to your "*addons*" folder in your own server.
 It had to looks like :
 
-![Looks like](https://image.noelshack.com/fichiers/2017/45/6/1510399504-looks-like.png)
+![Looks like](https://image.noelshack.com/fichiers/2017/45/6/1510400265-looks-like.png)
 
-  ### Configuration
+## Configuration
 You can easily config your addon, by modifiying the "*rpname_config.lua*".
 To do this, just go to :
-```
+```bash
 addons/npc_rpname/lua/autorun/`
 ```
 
