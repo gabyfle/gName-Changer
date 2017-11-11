@@ -19,15 +19,15 @@ This is a simple addon that allow to your players to go to the tawn hall to make
 ## Screenshots
 These screenshots have been taken with the default colors. All colors are changeable.
 
-* The NPC, with the 3d2d cam, following the player's camera :
+* **The NPC, with the 3d2d cam, following the player's camera** :
 
 ![3d2d](https://image.noelshack.com/fichiers/2017/45/6/1510397731-png-view.png)
 
-* The principal frame :
+* **The principal frame** :
 
 ![frame](https://image.noelshack.com/fichiers/2017/45/6/1510397731-derma.png)
 
-* The RP name change frame :
+* **The RP name change frame** :
 
 ![Name](https://image.noelshack.com/fichiers/2017/45/6/1510397731-name-derma.png)
 
@@ -39,15 +39,14 @@ It had to looks like :
 
 ![Looks like](https://image.noelshack.com/fichiers/2017/45/6/1510399504-looks-like.png)
 
-  ###### Configuration
+  ### Configuration
 You can easily config your addon, by modifiying the "*rpname_config.lua*".
 To do this, just go to :
+```
+addons/npc_rpname/lua/autorun/`
+```
 
-`addons/npc_rpname/lua/autorun/`
-
-And open the file named : "*rpname_config.lua*"
-
-:kiss:
+And open the file named : "*rpname_config.lua*" :kiss:
 ## Contact me
 Do you need my services, help or anything else ? Contact me on :
 
