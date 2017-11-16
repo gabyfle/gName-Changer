@@ -12,6 +12,6 @@
 
 hook.Add("PostGamemodeLoaded", "RPName:removeChatCommand", function()
 	-- Modifying some DarkRP commands
-	DarkRP.removeChatCommand("rpname") -- Desactive /rpname
-	DarkRP.removeChatCommand("name") -- Desactive /name
+	DarkRP.removeChatCommand("rpname") -- Deactivate /rpname
+	DarkRP.removeChatCommand("name") -- Deactivate /name
 end)

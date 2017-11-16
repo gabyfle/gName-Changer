@@ -16,7 +16,7 @@ ENT.Spawnable = true
 
 -- Initialization of the ENT ( set the model )
 function ENT:Initialize()
-	self:SetModel(RPName_model)
+	self:SetModel(gNameChanger.model or "models/gman.mdl")
 	self:SetSolid(SOLID_BBOX)
 	if SERVER then
 		self:SetUseType(SIMPLE_USE) -- Press USE to interact with

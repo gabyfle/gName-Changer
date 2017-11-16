@@ -3,7 +3,7 @@
 
 	RPName changer
 
-	This addon require DarkRP to work well.
+	This addon requires DarkRP to work.
 ]]--
 include("shared.lua")
 
@@ -46,16 +46,15 @@ surface.CreateFont( "montserrat-medium", {
 })
 function ENT:Draw() -- Draw the ENT to the client
 	-- the hex2rgb function wasn't done by myself. It has be found on GithubGist : https://gist.github.com/jasonbradley/4357406
-	local hexCam = RPName_cam_color
-	hexCam = hexCam:gsub("#","")
+	local hexCam = string.Replace(gNameChanger.camColor,"#","")
 	if(string.len(hexCam) == 3) then
-		redCam = tonumber("0x"..hexCam:sub(1,1)) * 17
-		greenCam = tonumber("0x"..hexCam:sub(2,2)) * 17
-		blueCam = tonumber("0x"..hexCam:sub(3,3)) * 17
+		local redCam = tonumber("0x"..hexCam:sub(1,1)) * 17
+		local greenCam = tonumber("0x"..hexCam:sub(2,2)) * 17
+		local blueCam = tonumber("0x"..hexCam:sub(3,3)) * 17
 	elseif(string.len(hexCam) == 6) then
-		redCam = tonumber("0x"..hexCam:sub(1,2))
-		greenCam = tonumber("0x"..hexCam:sub(3,4))
-		blueCam = tonumber("0x"..hexCam:sub(5,6))
+		local redCam = tonumber("0x"..hexCam:sub(1,2))
+		local greenCam = tonumber("0x"..hexCam:sub(3,4))
+		local blueCam = tonumber("0x"..hexCam:sub(5,6))
 	end
 	-- end of hex2rgb function
 	local pos = self:GetPos()+ Vector(0, 0, 75)
@@ -80,16 +79,15 @@ local function DermaPanel()
 	local lerp = 75 -- Var is going to be used to change opacity
 	local lerp_name = 75 -- Var is going to be used to change opacity
 	-- the hex2rgb function wasn't done by myself. It has be found on GithubGist : https://gist.github.com/jasonbradley/4357406
-	local hex = RPName_color
-	hex = hex:gsub("#","")
+	local hex = string.Replace(gNameChanger.dermaColor,"#","")
 	if(string.len(hex) == 3) then
-		red = tonumber("0x"..hex:sub(1,1)) * 17
-		green = tonumber("0x"..hex:sub(2,2)) * 17
-		blue = tonumber("0x"..hex:sub(3,3)) * 17
+		local red = tonumber("0x"..hex:sub(1,1)) * 17
+		local green = tonumber("0x"..hex:sub(2,2)) * 17
+		local blue = tonumber("0x"..hex:sub(3,3)) * 17
 	elseif(string.len(hex) == 6) then
-		red = tonumber("0x"..hex:sub(1,2))
-		green = tonumber("0x"..hex:sub(3,4))
-		blue = tonumber("0x"..hex:sub(5,6))
+		local red = tonumber("0x"..hex:sub(1,2))
+		local green = tonumber("0x"..hex:sub(3,4))
+		local blue = tonumber("0x"..hex:sub(5,6))
 	end
 	-- end of hex2rgb function
 	--[[
@@ -99,8 +97,8 @@ local function DermaPanel()
 		intro_sent = sentence show on in the middle top of the frame
 		rpname_button = button for changing the rp name
 	]]--
-	frame_height = ScrH() / 3
-	frame_width = ScrW() / 4
+	local frame_height = ScrH() / 3
+	local frame_width = ScrW() / 4
 	local frame = vgui.Create("DFrame")
 	frame:SetSize(frame_width, frame_height)
 	frame:SetTitle("")
@@ -152,7 +150,7 @@ local function DermaPanel()
 		--[[
 			RPNameChanger Derma panel
 		]]--
-		frame_height_little = frame_height / 1.5
+		local frame_height_little = frame_height / 1.5
 		local rpname_frame = vgui.Create("DFrame")
 		rpname_frame:SetSize(frame_width, frame_height_little)
 		rpname_frame:SetTitle("")
@@ -194,7 +192,7 @@ local function DermaPanel()
 			-- ReOpen the principal frame ( call the function to create the frame )
 			DermaPanel()
 		end
-		rpname_textentry_firstname = vgui.Create("DTextEntry", rpname_frame)
+		local rpname_textentry_firstname = vgui.Create("DTextEntry", rpname_frame)
 		rpname_textentry_firstname:SetPos(frame_width / 50, frame_height_little / 2.5)
 		rpname_textentry_firstname:SetSize(frame_width / 2 - 20, 40)
 		rpname_textentry_firstname:SetFont("roboto-light")
@@ -223,7 +221,7 @@ local function DermaPanel()
 		rpname_label_surname:SetPos(frame_width / 1.93, frame_height_little / 3.5)
 		rpname_label_surname:SizeToContents()
 		rpname_change_button = vgui.Create("DButton", rpname_frame)
-		rpname_change_button:SetText("Changer mon nom ! Viiite ! ( " .. RPName_price .. "€ )")
+		rpname_change_button:SetText("Changer mon nom ! Viiite ! ( " .. gNameChanger.price .. "€ )")
 		rpname_change_button:SetPos(frame_width / 50, frame_height_little / 1.6)
 		rpname_change_button:SetSize(frame_width - 20, 40)
 		rpname_change_button:SetColor(Color(241, 250, 238))
@@ -238,10 +236,8 @@ local function DermaPanel()
 				return false
 			else
 				-- Sending to the server the new name.
-				net.Start("rpnamechange")
-					net.WriteString(rpname_textentry_firstname:GetValue())
-					net.WriteString(rpname_textentry_surname:GetValue())
-					net.WriteInt(LocalPlayer():getDarkRPVar("money"), 16)
+				net.Start("gName_Changer_name")
+					net.WriteString(rpname_textentry_firstname:GetValue() .. rpname_textentry_surname:GetValue())
 				net.SendToServer()
 				rpname_frame:Close()
 				DermaPanel()
@@ -263,4 +259,4 @@ local function DermaPanel()
 	end
 end
 
-net.Receive("dermapanel", DermaPanel)
+net.Receive("gName_Changer_panel", DermaPanel)

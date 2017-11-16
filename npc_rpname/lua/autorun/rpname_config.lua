@@ -11,12 +11,14 @@
 --[[ NPC Theme Settings ]]--
 ----------------------------
 
+gNameChanger = gNameChanger or {}
+
 -- Model of the NPC
-RPName_model = "models/gman.mdl" -- Default GMAN model
+gNameChanger.model = "models/gman.mdl" -- Default GMAN model
 -- Derma color
-RPName_color = "#1D3557" -- Color in hexa format ( DO NOT FORGOT THE FUCKING --> # <--)
+gNameChanger.dermaColor = "#1D3557" -- Color in hexa format ( with or without # )
 -- 3D2D CAM Color
-RPName_cam_color = "#1D3557" -- Color in hexa format ( AGAIN, DO NOT FORGOT THE FUCKING --> # <--)
+gNameChanger.camColor = "#1D3557" -- Color in hexa format ( with or without # )
 
 ---------------------------
 --[[ SOME FUNNY COLORS ]]--
@@ -30,4 +32,4 @@ RPName_cam_color = "#1D3557" -- Color in hexa format ( AGAIN, DO NOT FORGOT THE 
 --[[ NPC Settings ]]--
 ----------------------
 -- The price players will pay to change their name
-RPName_price = 1000
+gNameChanger.price = 1000
