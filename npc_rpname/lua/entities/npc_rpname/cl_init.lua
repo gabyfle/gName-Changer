@@ -46,15 +46,16 @@ surface.CreateFont( "montserrat-medium", {
 })
 function ENT:Draw() -- Draw the ENT to the client
 	-- the hex2rgb function wasn't done by myself. It has be found on GithubGist : https://gist.github.com/jasonbradley/4357406
+	local redCam, greenCam, blueCam
 	local hexCam = string.Replace(gNameChanger.camColor,"#","")
 	if(string.len(hexCam) == 3) then
-		local redCam = tonumber("0x"..hexCam:sub(1,1)) * 17
-		local greenCam = tonumber("0x"..hexCam:sub(2,2)) * 17
-		local blueCam = tonumber("0x"..hexCam:sub(3,3)) * 17
+		redCam = tonumber("0x"..hexCam:sub(1,1)) * 17
+		greenCam = tonumber("0x"..hexCam:sub(2,2)) * 17
+		blueCam = tonumber("0x"..hexCam:sub(3,3)) * 17
 	elseif(string.len(hexCam) == 6) then
-		local redCam = tonumber("0x"..hexCam:sub(1,2))
-		local greenCam = tonumber("0x"..hexCam:sub(3,4))
-		local blueCam = tonumber("0x"..hexCam:sub(5,6))
+		redCam = tonumber("0x"..hexCam:sub(1,2))
+		greenCam = tonumber("0x"..hexCam:sub(3,4))
+		blueCam = tonumber("0x"..hexCam:sub(5,6))
 	end
 	-- end of hex2rgb function
 	local pos = self:GetPos()+ Vector(0, 0, 75)
@@ -78,16 +79,17 @@ local function DermaPanel()
 	local ply = LocalPlayer() -- Define the ply var to the LocalPlayer entity
 	local lerp = 75 -- Var is going to be used to change opacity
 	local lerp_name = 75 -- Var is going to be used to change opacity
+	local red, green, blue
 	-- the hex2rgb function wasn't done by myself. It has be found on GithubGist : https://gist.github.com/jasonbradley/4357406
 	local hex = string.Replace(gNameChanger.dermaColor,"#","")
 	if(string.len(hex) == 3) then
-		local red = tonumber("0x"..hex:sub(1,1)) * 17
-		local green = tonumber("0x"..hex:sub(2,2)) * 17
-		local blue = tonumber("0x"..hex:sub(3,3)) * 17
+		red = tonumber("0x"..hex:sub(1,1)) * 17
+		green = tonumber("0x"..hex:sub(2,2)) * 17
+		blue = tonumber("0x"..hex:sub(3,3)) * 17
 	elseif(string.len(hex) == 6) then
-		local red = tonumber("0x"..hex:sub(1,2))
-		local green = tonumber("0x"..hex:sub(3,4))
-		local blue = tonumber("0x"..hex:sub(5,6))
+		red = tonumber("0x"..hex:sub(1,2))
+		green = tonumber("0x"..hex:sub(3,4))
+		blue = tonumber("0x"..hex:sub(5,6))
 	end
 	-- end of hex2rgb function
 	--[[

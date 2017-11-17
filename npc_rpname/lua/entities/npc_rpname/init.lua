@@ -42,7 +42,7 @@ end
 ]]--
 net.Receive("gName_Changer_name", function(len, ply)
 	local complete_name = net.ReadString()
-	if ply:getDarkRPVar("money") < gNameChanger.price then
+	if ply:canAfford(gNameChanger.price) then
 		DarkRP.notify(ply, 2, 15, "Désolé ! Vous n'avez pas assez d'argent pour changer votre nom !")
 	else
 		DarkRP.retrieveRPNames(complete_name, function(taken)
