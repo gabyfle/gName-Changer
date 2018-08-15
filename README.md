@@ -15,6 +15,7 @@ This is a simple addon that allow to your players to go to the tawn hall to make
 * **Easy** setup
 * A **complete** config file : change *colors*, *models* and *more* !
 * [**HOT**] *Responsive* panels !
+* **Anti-spam** protection! (*configurable*)
 * **Works with the latest DarkRP version !**
 
 ## Screenshots

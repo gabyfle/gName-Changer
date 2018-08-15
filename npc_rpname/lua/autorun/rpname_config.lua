@@ -7,11 +7,18 @@
 
 -----------------------------------------------------------------------------]]
 
+gNameChanger = gNameChanger or {}
+
+----------------------------
+--[[ NPC General Settings ]]--
+----------------------------
+
+-- The command to save 
+gNameChanger.saveCommand = "rpname_save_all" -- WARNING : using same command has an other addon may causes conflicts
+
 ----------------------------
 --[[ NPC Theme Settings ]]--
 ----------------------------
-
-gNameChanger = gNameChanger or {}
 
 -- Model of the NPC
 gNameChanger.model = "models/gman.mdl" -- Default GMAN model
@@ -33,3 +40,5 @@ gNameChanger.camColor = "#1D3557" -- Color in hexa format ( with or without # )
 ----------------------
 -- The price players will pay to change their name
 gNameChanger.price = 1000
+-- Minimum delay between two name change (in seconds)
+gNameChanger.delay = 120
