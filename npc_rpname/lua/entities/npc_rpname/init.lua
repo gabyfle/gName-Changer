@@ -52,25 +52,28 @@ end
 
 -- Player change RPNAME function
 local function rpNameChange(len, ply)
-	local complete_name = net.ReadString()
-
 	if !canChange(ply) then
 		DarkRP.notify(ply, 1, 15, "Vous devez attendre " .. gNameChanger.delay .. " secondes entre chaque changements de nom.")
-
 		return
 	end
+	
+	local complete_name = net.ReadString()
 
 	if !ply:canAfford(gNameChanger.price) then
 		DarkRP.notify(ply, 1, 15, "Désolé ! Vous n'avez pas assez d'argent pour changer votre nom !")
 
 		return
 	else
+		
 		DarkRP.retrieveRPNames(complete_name, function(taken)
 			if taken then
-				DarkRP.notify(ply, 1, 5, "Ce nom est déjà pris ! Désolé !")
+				DarkRP.notify(ply, 1, 5, DarkRP.getPhrase("unable", "RPname", DarkRP.getPhrase("already_taken")))
 			else
 				ply:addMoney(-gNameChanger.price)
-				ply:setRPName(complete_name, false)
+
+				DarkRP.storeRPName(ply, name)
+				ply:setDarkRPVar("rpname", name)
+				DarkRP.notifyAll(2, 6, DarkRP.getPhrase("rpname_changed", self:SteamName(), name))
 			end
 		end)
 	end
