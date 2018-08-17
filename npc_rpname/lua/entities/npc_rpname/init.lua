@@ -39,11 +39,11 @@ function ENT:AcceptInput(inputName, activator, caller, data)
 end
 
 local function canChange(ply)
-	if ply.gNameLastNameChange == nil then return true end
+	if not ply.gNameLastNameChange then return true end
 
 	local possible = ply.gNameLastNameChange + gNameChanger.delay
 
-	if CurTime() > possible then
+	if CurTime() < possible then
 		return false
 	end
 
@@ -54,7 +54,7 @@ end
 local function rpNameChange(len, ply)
 	local complete_name = net.ReadString()
 
-	if canChange(ply) then
+	if !canChange(ply) then
 		DarkRP.notify(ply, 1, 15, "Vous devez attendre " .. gNameChanger.delay .. " secondes entre chaque changements de nom.")
 
 		return
@@ -62,6 +62,8 @@ local function rpNameChange(len, ply)
 
 	if !ply:canAfford(gNameChanger.price) then
 		DarkRP.notify(ply, 1, 15, "Désolé ! Vous n'avez pas assez d'argent pour changer votre nom !")
+
+		return
 	else
 		DarkRP.retrieveRPNames(complete_name, function(taken)
 			if taken then

@@ -13,8 +13,15 @@ gNameChanger = gNameChanger or {}
 --[[ NPC General Settings ]]--
 ----------------------------
 
+-- Permission to access to the command
+gNameChanger.canUseCommands = {
+	"superadmin",
+	"admin",
+	"user"
+}
 -- The command to save 
 gNameChanger.saveCommand = "rpname_save_all" -- WARNING : using same command has an other addon may causes conflicts
+
 
 ----------------------------
 --[[ NPC Theme Settings ]]--

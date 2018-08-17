@@ -10,7 +10,12 @@
 function gNameChanger:Init()
 	if SERVER then
 		self:CheckData()
-
+		-- Loading entities & stuff
+		hook.Add("InitPostEntity", "RPName:loadingServerSide", function()
+			if SERVER then
+				self:Load()
+			end
+		end)
 		-- Remove name command
 		hook.Add("PostGamemodeLoaded", "RPName:removeChatCommand", function()
 			-- Modifying some DarkRP commands
@@ -24,6 +29,12 @@ function gNameChanger:Init()
 			self:Save(ply, cmd, args)
 		end
 	end)
-end
 
-gNameChanger:Init()
+	if SERVER then
+		print(" *=======================* ")
+		print("|   RPName Changer Addon  |")
+		print("|===-->  Eat broccoli     |")
+		print("|   Created by Gabyfle    |")
+		print(" *=======================* ")
+	end
+end

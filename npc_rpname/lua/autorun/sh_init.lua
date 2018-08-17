@@ -17,3 +17,5 @@ end
 if CLIENT then
 	include("rpname/shared/sh_rpname.lua")
 end
+
+gNameChanger:Init()
