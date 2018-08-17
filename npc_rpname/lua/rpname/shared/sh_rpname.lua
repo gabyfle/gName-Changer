@@ -12,9 +12,7 @@ function gNameChanger:Init()
 		self:CheckData()
 		-- Loading entities & stuff
 		hook.Add("InitPostEntity", "RPName:loadingServerSide", function()
-			if SERVER then
-				self:Load()
-			end
+			self:Load()
 		end)
 		-- Remove name command
 		hook.Add("PostGamemodeLoaded", "RPName:removeChatCommand", function()
