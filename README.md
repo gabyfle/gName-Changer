@@ -24,7 +24,7 @@ These screenshots have been taken with the default colors. All colors are change
 
 * **The NPC, with the 3d2d cam, following the player's camera** :
 
-![3d2d](https://image.noelshack.com/fichiers/2017/45/6/1510397731-png-view.png)
+![3d2d](https://image.noelshack.com/fichiers/2018/34/2/1534852560-npc-gnamechanger.gif)
 
 * **The principal frame** :
 
