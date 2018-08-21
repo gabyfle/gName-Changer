@@ -14,7 +14,7 @@ This is a simple addon that allow to your players to go to the tawn hall to make
 * **Smooth animations**
 * **Easy** setup
 * A **complete** config file : change *colors*, *models* and *more* !
-* ~~[**HOT**] *Responsive* panels !~~ (bugs found on this feature, fix incoming)
+* [**HOT**] *Responsive* panels ! (**fixed**!)
 * **Anti-spam** protection! (*configurable*)
 * [**HOT**] **Save** the NPCs position! (command: `rpname_save_all` [configurable])
 * **Works with the latest DarkRP version !**
