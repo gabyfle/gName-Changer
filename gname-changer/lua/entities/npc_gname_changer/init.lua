@@ -40,7 +40,7 @@ end
 
 local function canChange(ply, npc)
 
-	if not npc or not IsValid(npc) or npc:GetClass() != "npc_gname_changer" then return false
+	if not npc or not IsValid(npc) or npc:GetClass() != "npc_gname_changer" then return false end
 	
 	local distance = npc:GetPos():DistToSqr(ply:GetPos())
 	
