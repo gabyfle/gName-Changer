@@ -133,7 +133,7 @@ local function nameDerma(panel, ply, npc)
 						-- Sending to the server the new name.
 						net.Start("gName_NPC_Changer_name")
 							net.WriteString(nameText:GetValue() .. " " .. lastText:GetValue())
-							--net.WriteEntity(npc)
+							net.WriteEntity(npc)
 						net.SendToServer()
 
 						-- Updating the name
@@ -163,7 +163,7 @@ end
 
 local function mainDerma()
 	local w, h, ply = ScrW(), 250, LocalPlayer()
-	local npc = 1--net.ReadEntity()
+	local npc = net.ReadEntity()
 
 	if w < 480 then
 		w = 380

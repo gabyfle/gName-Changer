@@ -49,3 +49,5 @@ gNameChanger.camColor = Color(29, 53, 87, 230) -- Got a color in hexagonal form?
 gNameChanger.price = 1000
 -- Minimum delay between two name change (in seconds)
 gNameChanger.delay = 120 -- Obviously, 0 cancels the delay
+-- Maximum distance from the NPC to change name (gmod units)
+gNameChanger.max_distance = 300
