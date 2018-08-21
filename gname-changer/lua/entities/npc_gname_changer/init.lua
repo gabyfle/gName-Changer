@@ -32,24 +32,21 @@ end
 -- When player use the "USE" button on NPC
 function ENT:AcceptInput(inputName, activator, caller, data)
 	if inputName == "Use" and IsValid(caller) and caller:IsPlayer() then
+		caller.usedNPC = self
 		net.Start("gName_NPC_Changer_panel")
-			--net.WriteEntity(self)
+			-- Nothing to write there
 		net.Send(caller)
 	end
 end
 
-local function canChange(ply, npc)
-	-- Player is launching derma without calling entity	
-	--if not IsValid(npc) then return false
-	--else
-		--local distance = npc:GetPos():DistToSqr(ply:GetPos())
-
-		--if distance < 900 then return false end
-	--end
+local function canChange(ply)
+	-- Player is launching derma without using entity (or player is too far from entity)
+	if not (ply.usedNPC:GetPos():DistToSqr(ply:GetPos()) < gNameChanger.distance^2) then
+		return false
+	end
 
 	-- The countdown isn't finished
 	if not ply.gNameLastNameChange then return true end
-
 	local possible = ply.gNameLastNameChange + gNameChanger.delay
 	if CurTime() < possible then return false end
 
@@ -58,9 +55,7 @@ end
 
 -- Player change RPNAME function
 local function rpNameChange(len, ply)
-	local npc = 1 --net.ReadEntity()
-
-	if not canChange(ply, npc) then
+	if not canChange(ply) then
 		DarkRP.notify(ply, 1, 15, "Vous devez attendre " .. gNameChanger.delay .. " secondes entre chaque changements de nom.")
 		return
 	end
