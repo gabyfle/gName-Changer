@@ -8,14 +8,16 @@
 -----------------------------------------------------------------------------]]
 -- Server initialization code
 if SERVER then
-	include("rpname/server/sv_rpname.lua")
-	include("rpname/shared/sh_rpname.lua")
-	AddCSLuaFile("rpname/shared/sh_rpname.lua")
+	include("gnamechanger/server/sv_rpname.lua")
+	include("gnamechanger/shared/sh_rpname.lua")
+	AddCSLuaFile("gnamechanger/shared/sh_rpname.lua")
+	AddCSLuaFile("gnamechanger/client/cl_rpname.lua")
 end
 
 -- Client initialization code
 if CLIENT then
-	include("rpname/shared/sh_rpname.lua")
+	include("gnamechanger/shared/sh_rpname.lua")
+	include("gnamechanger/client/cl_rpname.lua")
 end
 
 gNameChanger:Init()

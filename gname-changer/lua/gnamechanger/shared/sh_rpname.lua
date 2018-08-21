@@ -9,7 +9,6 @@
 
 function gNameChanger:Init()
 	if SERVER then
-		self:CheckData()
 		-- Loading entities & stuff
 		hook.Add("InitPostEntity", "RPName:loadingServerSide", function()
 			self:Load()
@@ -19,7 +18,13 @@ function gNameChanger:Init()
 			-- Modifying some DarkRP commands
 			DarkRP.removeChatCommand("rpname") -- Deactivate /rpname
 			DarkRP.removeChatCommand("name") -- Deactivate /name
-		end)		
+		end)
+		
+		print(" *=======================* ")
+		print("|   RPName Changer Addon  |")
+		print("|===-->  Eat broccoli     |")
+		print("|   Created by Gabyfle    |")
+		print(" *=======================* ")
 	end
 
 	concommand.Add(gNameChanger.saveCommand, function(ply, cmd, args)
@@ -27,12 +32,4 @@ function gNameChanger:Init()
 			self:Save(ply, cmd, args)
 		end
 	end)
-
-	if SERVER then
-		print(" *=======================* ")
-		print("|   RPName Changer Addon  |")
-		print("|===-->  Eat broccoli     |")
-		print("|   Created by Gabyfle    |")
-		print(" *=======================* ")
-	end
 end

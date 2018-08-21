@@ -1,9 +1,9 @@
 --[[---------------------------------------------------------------------------
 
-				        gName-Changer | CONFIGURATION
-				This addon has been created & released for free
-								   by Gaby
-				Steam : https://steamcommunity.com/id/EpicGaby
+                        gName-Changer | CONFIGURATION
+                This addon has been created & released for free
+                                   by Gaby
+                Steam : https://steamcommunity.com/id/EpicGaby
 
 -----------------------------------------------------------------------------]]
 
@@ -15,12 +15,12 @@ gNameChanger = gNameChanger or {}
 
 -- Permission to access to the command
 gNameChanger.canUseCommands = {
-	"superadmin",
-	"admin",
-	"user"
+    "superadmin",
+    "admin",
+    "user"
 }
 -- The command to save 
-gNameChanger.saveCommand = "rpname_save_all" -- WARNING : using same command has an other addon may causes conflicts
+gNameChanger.saveCommand = "gname_save_all" -- WARNING : using same command has an other addon may causes conflicts
 
 
 ----------------------------
@@ -30,16 +30,16 @@ gNameChanger.saveCommand = "rpname_save_all" -- WARNING : using same command has
 -- Model of the NPC
 gNameChanger.model = "models/gman.mdl" -- Default GMAN model
 -- Derma color
-gNameChanger.dermaColor = "#1D3557" -- Color in hexa format ( with or without # )
+gNameChanger.dermaColor = Color(29, 53, 87) -- Got a color in hexagonal form? http://www.color-hex.com
 -- 3D2D CAM Color
-gNameChanger.camColor = "#1D3557" -- Color in hexa format ( with or without # )
+gNameChanger.camColor = Color(29, 53, 87, 230) -- Got a color in hexagonal form? http://www.color-hex.com
 
 ---------------------------
 --[[ SOME FUNNY COLORS ]]--
---[[ 	CYAN #40A497   ]]--
---[[ 	PINK #FF358B   ]]--
+--[[    CYAN #40A497   ]]--
+--[[    PINK #FF358B   ]]--
 --[[   PURPLE #551A8B  ]]--
---[[ 	RED #FF030D	   ]]--
+--[[    RED #FF030D    ]]--
 ---------------------------
 
 ----------------------
@@ -48,4 +48,4 @@ gNameChanger.camColor = "#1D3557" -- Color in hexa format ( with or without # )
 -- The price players will pay to change their name
 gNameChanger.price = 1000
 -- Minimum delay between two name change (in seconds)
-gNameChanger.delay = 120
+gNameChanger.delay = 120 -- Obviously, 0 cancels the delay

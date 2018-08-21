@@ -18,9 +18,8 @@ resource.AddFile("resource/fonts/roboto-light.ttf")
 
 -- When entity spawn
 function ENT:SpawnFunction(ply, tr, ClassName) -- The spawnning informations for the ENT
-	if !tr.Hit then
-		return ""
-	end
+	if not tr.Hit then return "" end
+
 	local SpawnPos = tr.HitPos + tr.HitNormal * 10
 	local ent = ents.Create(ClassName)
 		ent:SetPos(SpawnPos)
@@ -34,38 +33,45 @@ end
 function ENT:AcceptInput(inputName, activator, caller, data)
 	if inputName == "Use" and IsValid(caller) and caller:IsPlayer() then
 		net.Start("gName_NPC_Changer_panel")
+			--net.WriteEntity(self)
 		net.Send(caller)
 	end
 end
 
-local function canChange(ply)
+local function canChange(ply, npc)
+	-- Player is launching derma without calling entity	
+	--if not IsValid(npc) then return false
+	--else
+		--local distance = npc:GetPos():DistToSqr(ply:GetPos())
+
+		--if distance < 900 then return false end
+	--end
+
+	-- The countdown isn't finished
 	if not ply.gNameLastNameChange then return true end
 
 	local possible = ply.gNameLastNameChange + gNameChanger.delay
-
-	if CurTime() < possible then
-		return false
-	end
+	if CurTime() < possible then return false end
 
 	return true
 end
 
 -- Player change RPNAME function
 local function rpNameChange(len, ply)
-	if !canChange(ply) then
+	local npc = 1 --net.ReadEntity()
+
+	if not canChange(ply, npc) then
 		DarkRP.notify(ply, 1, 15, "Vous devez attendre " .. gNameChanger.delay .. " secondes entre chaque changements de nom.")
 		return
 	end
 	
-	local complete_name = net.ReadString()
+	local name = net.ReadString()
 
-	if !ply:canAfford(gNameChanger.price) then
+	if not ply:canAfford(gNameChanger.price) then
 		DarkRP.notify(ply, 1, 15, "Désolé ! Vous n'avez pas assez d'argent pour changer votre nom !")
-
 		return
-	else
-		
-		DarkRP.retrieveRPNames(complete_name, function(taken)
+	else		
+		DarkRP.retrieveRPNames(name, function(taken)
 			if taken then
 				DarkRP.notify(ply, 1, 5, DarkRP.getPhrase("unable", "RPname", DarkRP.getPhrase("already_taken")))
 			else
@@ -73,17 +79,12 @@ local function rpNameChange(len, ply)
 
 				DarkRP.storeRPName(ply, name)
 				ply:setDarkRPVar("rpname", name)
-				DarkRP.notifyAll(2, 6, DarkRP.getPhrase("rpname_changed", self:SteamName(), name))
+				DarkRP.notifyAll(2, 6, DarkRP.getPhrase("rpname_changed", ply:SteamName(), name))
 			end
 		end)
 	end
 
 	ply.gNameLastNameChange = CurTime()
-
-	-- Re-open the frame
-	net.Start("gName_NPC_Changer_panel")
-	net.Send(ply)
-
 end
 
 net.Receive("gName_NPC_Changer_name", rpNameChange)
