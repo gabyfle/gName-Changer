@@ -1,10 +1,8 @@
 --[[---------------------------------------------------------------------------
-
 				        gName-Changer | SERVER SIDE CODE
 				This addon has been created & released for free
 								   by Gaby
 				Steam : https://steamcommunity.com/id/EpicGaby
-
 -----------------------------------------------------------------------------]]
 AddCSLuaFile("cl_init.lua")
 AddCSLuaFile("shared.lua")
@@ -49,7 +47,7 @@ local function canChange(ply)
 	if not ply.gNameLastNameChange then return true end
 	local possible = ply.gNameLastNameChange + gNameChanger.delay
 	if CurTime() < possible then 
-		DarkRP.notify(ply, 1, 15, "Vous devez attendre " .. gNameChanger.delay .. " secondes entre chaque changements de nom.")
+		DarkRP.notify(ply, 1, 15, gNameChanger:LangMatch(gNameChanger.Language.needWait))
 		return false
 	end
 
@@ -65,7 +63,7 @@ local function rpNameChange(len, ply)
 	local name = net.ReadString()
 
 	if not ply:canAfford(gNameChanger.price) then
-		DarkRP.notify(ply, 1, 15, "Désolé ! Vous n'avez pas assez d'argent pour changer votre nom !")
+		DarkRP.notify(ply, 1, 15, gNameChanger:LangMatch(gNameChanger.Language.needMoney))
 		return
 	else		
 		DarkRP.retrieveRPNames(name, function(taken)

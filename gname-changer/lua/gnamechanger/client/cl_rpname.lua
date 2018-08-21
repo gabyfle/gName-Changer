@@ -77,14 +77,14 @@ local function nameDerma(panel, ply, npc)
 				closeBut  : A big red button to close the frame, at the bottom
 	-----------------------------------------------------------------------------------]]
 		local title = vgui.Create("DLabel", frame)
-			  title:SetText("CHANGER DE NOM")
+			  title:SetText(gNameChanger.Language.changeName)
 			  title:SetColor(Color(241, 250, 238))
 			  title:SetFont("montserrat-medium")
 			  title:SetPos(15, 2)
 			  title:SizeToContents()
 
 		local nameLab = vgui.Create("DLabel", frame)
-			  nameLab:SetText("Prénom :")
+			  nameLab:SetText(gNameChanger.Language.name)
 			  nameLab:SetFont("roboto-light")
 			  nameLab:SetPos(30, 40)
 			  nameLab:SizeToContents()
@@ -100,7 +100,7 @@ local function nameDerma(panel, ply, npc)
 			  end
 
 		local lastLab = vgui.Create("DLabel", frame)
-			  lastLab:SetText("Patronyme :")
+			  lastLab:SetText(gNameChanger.Language.lastName)
 			  lastLab:SetFont("roboto-light")
 			  lastLab:SetPos(nameText:GetWide() + 30 + 10, 40)
 			  lastLab:SizeToContents()
@@ -116,7 +116,7 @@ local function nameDerma(panel, ply, npc)
 			  end
 
 		local changeBut = vgui.Create("DButton", frame)
-			  changeBut:SetText("Changer mon nom ! Viiite ! ( " .. gNameChanger.price .. "€ )")
+			  changeBut:SetText(gNameChanger:LangMatch(gNameChanger.Language.changeBut))
 			  changeBut:SetPos(10, h - 100)
 			  changeBut:SetSize(w - 20, 40)
 			  changeBut:SetColor(Color(241, 250, 238))
@@ -137,7 +137,7 @@ local function nameDerma(panel, ply, npc)
 
 						-- Updating the name
 						local childs = panel:GetChildren()
-						childs[6]:SetText("Bonjour " .. ply:getDarkRPVar("rpname") .. ". Que puis-je pour vous ?")
+						childs[6]:SetText(gNameChanger:LangMatch(gNameChanger.Language.welcome))
 						childs[6]:SizeToContents()
 
 						panel:SetVisible(true)
@@ -146,7 +146,7 @@ local function nameDerma(panel, ply, npc)
 			  end
 			  
 		local closeBut = vgui.Create("DButton", frame)
-			  closeBut:SetText("Je divague, pardonnez-moi...")
+			  closeBut:SetText(gNameChanger.Language.sorry)
 			  closeBut:SetPos(10, h - 50)
 			  closeBut:SetSize(w - 20, 40)
 			  closeBut:SetColor(Color(241, 250, 238))
@@ -204,20 +204,20 @@ local function mainDerma()
 				closeBut  : A big red button to close the main frame
 	-----------------------------------------------------------------------------------]]
 	local title = vgui.Create("DLabel", frame)
-		  title:SetText("SECRÉTAIRE")
+		  title:SetText(gNameChanger.Language.secretary)
 		  title:SetColor(Color(241, 250, 238))
 		  title:SetFont("montserrat-medium")
 		  title:SetPos(15, 2)
 		  title:SizeToContents()
 
 	local welcome = vgui.Create("DLabel", frame)
-		  welcome:SetText("Bonjour " .. ply:getDarkRPVar("rpname") .. ". Que puis-je pour vous ?")
+		  welcome:SetText(gNameChanger:LangMatch(gNameChanger.Language.welcome))
 		  welcome:SetFont("roboto-light")
 		  welcome:SetPos(45, 45)
 		  welcome:SizeToContents()
 
 	local changeBut = vgui.Create("DButton", frame)
-		  changeBut:SetText("Je souhaite changer de nom ! Et que ça saute !")
+		  changeBut:SetText(gNameChanger.Language.wantChange)
 		  changeBut:SetPos(w / 50, h / 2.8)
 		  changeBut:SetSize(w - 20, 40)
 		  changeBut:SetColor(Color(241, 250, 238))
@@ -231,7 +231,7 @@ local function mainDerma()
 		  end
 
 	local closeBut = vgui.Create("DButton", frame)
-		  closeBut:SetText("Veuillez m'excuser, je me suis trompé. Au revoir !")
+		  closeBut:SetText(gNameChanger.Language.wrongChoose)
 		  closeBut:SetPos(10, h - 40 - 10)
 		  closeBut:SetSize(w - 20, 40)
 		  closeBut:SetColor(Color(241, 250, 238))

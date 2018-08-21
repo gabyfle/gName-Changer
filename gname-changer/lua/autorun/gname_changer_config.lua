@@ -9,9 +9,9 @@
 
 gNameChanger = gNameChanger or {}
 
-----------------------------
+------------------------------
 --[[ NPC General Settings ]]--
-----------------------------
+------------------------------
 
 -- Permission to access to the command
 gNameChanger.canUseCommands = {
@@ -22,6 +22,11 @@ gNameChanger.canUseCommands = {
 -- The command to save 
 gNameChanger.saveCommand = "gname_save_all" -- WARNING : using same command has an other addon may causes conflicts
 
+-- Language setting
+gNameChanger.lang = "en" -- Available languages : "fr", "en"
+
+-- Device
+gNameChanger.device = "$"
 
 ----------------------------
 --[[ NPC Theme Settings ]]--

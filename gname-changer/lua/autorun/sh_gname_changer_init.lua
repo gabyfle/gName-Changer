@@ -13,7 +13,6 @@ if SERVER then
 	AddCSLuaFile("gnamechanger/shared/sh_rpname.lua")
 	AddCSLuaFile("gnamechanger/client/cl_rpname.lua")
 end
-
 -- Client initialization code
 if CLIENT then
 	include("gnamechanger/shared/sh_rpname.lua")

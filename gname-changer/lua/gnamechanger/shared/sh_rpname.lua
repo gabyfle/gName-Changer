@@ -8,6 +8,27 @@
 -----------------------------------------------------------------------------]]
 
 function gNameChanger:Init()
+	local default = nil
+	if SERVER then
+		-- Loading language file
+		if not file.Exists("gnamechanger/lang/" .. gNameChanger.lang .. ".lua", "LUA") then
+			-- Default language is French
+			include("gnamechanger/lang/fr.lua")
+			AddCSLuaFile("gnamechanger/lang/fr.lua")
+
+			default = 1
+		else
+			include("gnamechanger/lang/" .. gNameChanger.lang .. ".lua")
+			AddCSLuaFile("gnamechanger/lang/" .. gNameChanger.lang .. ".lua")
+		end
+	end
+	if CLIENT then -- Including language file on clientside
+		if not default then
+			include("gnamechanger/lang/" .. gNameChanger.lang .. ".lua")
+		else
+			include("gnamechanger/lang/fr.lua")
+		end
+	end
 	if SERVER then
 		-- Loading entities & stuff
 		hook.Add("InitPostEntity", "RPName:loadingServerSide", function()
@@ -32,4 +53,23 @@ function gNameChanger:Init()
 			self:Save(ply, cmd, args)
 		end
 	end)
+end
+
+function gNameChanger:LangMatch(stringLang)
+	-- Used vars
+	local path = "gabyfle-rpname/npc_rpname_pos_" .. game.GetMap() .. ".txt"
+	if CLIENT then ply = LocalPlayer() end
+	
+	local vars = {
+		["delay"] = gNameChanger.delay,
+		["path"] = path,
+		["key_use"] = IN_USE,
+		["price"] = gNameChanger.price,
+		["device"] = gNameChanger.device		
+	}
+	if CLIENT then vars["plyname"] = ply:Nick() end
+	
+	local pattern = "{{(.-)}}"
+
+	return string.gsub(stringLang, pattern, vars)
 end

@@ -36,7 +36,7 @@ end
 function gNameChanger:Save(ply, cmd, args)
 	-- Checking if player has the apropriate rank
 	if not gNameChanger.canUseCommands[ply:GetUserGroup()] then
-		DarkRP.notify(ply, 1, 15, "Désolé ! Vous n'avez pas l'autorisation nécessaire pour utiliser cette commande.")
+		DarkRP.notify(ply, 1, 15, gNameChanger:LangMatch(gNameChanger.Language.needRight))
 
 		return
 	end
@@ -46,7 +46,7 @@ function gNameChanger:Save(ply, cmd, args)
 	-- If there isn't any npc_gname_changer entity
 	local number = #entities
 	if number == 0 then
-		DarkRP.notify(ply, 1, 15, "Il n'y a aucune entité à sauvegarder.")
+		DarkRP.notify(ply, 1, 15, gNameChanger:LangMatch(gNameChanger.Language.noEnts))
 
 		return
 	end
@@ -59,5 +59,5 @@ function gNameChanger:Save(ply, cmd, args)
 	-- Write JSON converted table to data file
 	file.Write(path, util.TableToJSON(data))
 
-	DarkRP.notify(ply, 3, 15, "Tous les NPCs ont étés sauvegardés dans data/" .. path .. "")
+	DarkRP.notify(ply, 3, 15, gNameChanger:LangMatch(gNameChanger.Language.entsSaved))
 end
