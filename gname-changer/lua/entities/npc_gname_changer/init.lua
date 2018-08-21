@@ -33,7 +33,7 @@ end
 function ENT:AcceptInput(inputName, activator, caller, data)
 	if inputName == "Use" and IsValid(caller) and caller:IsPlayer() then
 		net.Start("gName_NPC_Changer_panel")
-			--net.WriteEntity(self)
+			net.WriteEntity(self)
 		net.Send(caller)
 	end
 end
