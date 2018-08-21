@@ -41,14 +41,17 @@ end
 
 local function canChange(ply)
 	-- Player is launching derma without using entity (or player is too far from entity)
-	if not (ply.usedNPC:GetPos():DistToSqr(ply:GetPos()) < gNameChanger.distance^2) then
+	if not ply.usedNPC or not (ply.usedNPC:GetPos():DistToSqr(ply:GetPos()) < gNameChanger.distance^2) then
 		return false
 	end
 
 	-- The countdown isn't finished
 	if not ply.gNameLastNameChange then return true end
 	local possible = ply.gNameLastNameChange + gNameChanger.delay
-	if CurTime() < possible then return false end
+	if CurTime() < possible then 
+		DarkRP.notify(ply, 1, 15, "Vous devez attendre " .. gNameChanger.delay .. " secondes entre chaque changements de nom.")
+		return false
+	end
 
 	return true
 end
@@ -56,7 +59,6 @@ end
 -- Player change RPNAME function
 local function rpNameChange(len, ply)
 	if not canChange(ply) then
-		DarkRP.notify(ply, 1, 15, "Vous devez attendre " .. gNameChanger.delay .. " secondes entre chaque changements de nom.")
 		return
 	end
 	
