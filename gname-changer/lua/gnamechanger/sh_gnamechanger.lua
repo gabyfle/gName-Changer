@@ -7,6 +7,11 @@
 
 -----------------------------------------------------------------------------]]
 
+--[[-------------------------------------------------------------------------
+	void Init(void) : 
+		Initialize the addon with language files, launch Load() func, remove darkrp name commands
+		and add Console commands
+---------------------------------------------------------------------------]]
 function gNameChanger:Init()
 	local default = nil
 	if SERVER then
@@ -31,11 +36,11 @@ function gNameChanger:Init()
 	end
 	if SERVER then
 		-- Loading entities & stuff
-		hook.Add("InitPostEntity", "RPName:loadingServerSide", function()
+		hook.Add("InitPostEntity", "gNameChanger:loadingServerSide", function()
 			self:Load()
 		end)
 		-- Remove name command
-		hook.Add("PostGamemodeLoaded", "RPName:removeChatCommand", function()
+		hook.Add("PostGamemodeLoaded", "gNameChanger:removeChatCommand", function()
 			-- Modifying some DarkRP commands
 			DarkRP.removeChatCommand("rpname") -- Deactivate /rpname
 			DarkRP.removeChatCommand("name") -- Deactivate /name
@@ -47,14 +52,25 @@ function gNameChanger:Init()
 		print("|   Created by Gabyfle    |")
 		print(" *=======================* ")
 	end
-
+	-- Save NPCs command
 	concommand.Add(gNameChanger.saveCommand, function(ply, cmd, args)
 		if SERVER then
-			self:Save(ply, cmd, args)
+			self:Save(ply)
+		end
+	end)
+	-- Admin menu command
+	concommand.Add(gNameChanger.adminMenu, function(ply, cmd, args)
+		if SERVER then
+			self:AdminPanel(ply)
 		end
 	end)
 end
 
+--[[-------------------------------------------------------------------------
+	string LangMatch(string stringLang) :
+		Return a readable language string
+		[change languages vars (e.g {{path}}) to readable vars]
+---------------------------------------------------------------------------]]
 function gNameChanger:LangMatch(stringLang)
 	-- Used vars
 	local path = "gabyfle-rpname/npc_rpname_pos_" .. game.GetMap() .. ".txt"

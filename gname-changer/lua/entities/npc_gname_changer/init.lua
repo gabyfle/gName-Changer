@@ -7,8 +7,8 @@
 AddCSLuaFile("cl_init.lua")
 AddCSLuaFile("shared.lua")
 include("shared.lua")
-util.AddNetworkString("gName_NPC_Changer_panel")
-util.AddNetworkString("gName_NPC_Changer_name")
+util.AddNetworkString("gNameChanger:NPC:Panel")
+util.AddNetworkString("gNameChanger:NPC:Name")
 -- Adding the custom font, named Monserrat Medium
 resource.AddFile("resource/fonts/monserrat-medium.ttf")
 -- Adding a second custom font, named Roboto Light
@@ -31,55 +31,12 @@ end
 function ENT:AcceptInput(inputName, activator, caller, data)
 	if inputName == "Use" and IsValid(caller) and caller:IsPlayer() then
 		caller.usedNPC = self
-		net.Start("gName_NPC_Changer_panel")
+		net.Start("gNameChanger:NPC:Panel")
 			-- Nothing to write there
 		net.Send(caller)
 	end
 end
 
-local function canChange(ply)
-	-- Player is launching derma without using entity (or player is too far from entity)
-	if not ply.usedNPC or not (ply.usedNPC:GetPos():DistToSqr(ply:GetPos()) < gNameChanger.distance^2) then
-		return false
-	end
-
-	-- The countdown isn't finished
-	if not ply.gNameLastNameChange then return true end
-	local possible = ply.gNameLastNameChange + gNameChanger.delay
-	if CurTime() < possible then 
-		DarkRP.notify(ply, 1, 15, gNameChanger:LangMatch(gNameChanger.Language.needWait))
-		return false
-	end
-
-	return true
-end
-
--- Player change RPNAME function
-local function rpNameChange(len, ply)
-	if not canChange(ply) then
-		return
-	end
-	
-	local name = net.ReadString()
-
-	if not ply:canAfford(gNameChanger.price) then
-		DarkRP.notify(ply, 1, 15, gNameChanger:LangMatch(gNameChanger.Language.needMoney))
-		return
-	else		
-		DarkRP.retrieveRPNames(name, function(taken)
-			if taken then
-				DarkRP.notify(ply, 1, 5, DarkRP.getPhrase("unable", "RPname", DarkRP.getPhrase("already_taken")))
-			else
-				ply:addMoney(-gNameChanger.price)
-
-				DarkRP.storeRPName(ply, name)
-				ply:setDarkRPVar("rpname", name)
-				DarkRP.notifyAll(2, 6, DarkRP.getPhrase("rpname_changed", ply:SteamName(), name))
-			end
-		end)
-	end
-
-	ply.gNameLastNameChange = CurTime()
-end
-
-net.Receive("gName_NPC_Changer_name", rpNameChange)
+net.Receive("gNameChanger:NPC:Name", function(len,ply) 
+	gNameChanger:rpNameChange(len, ply)
+end)

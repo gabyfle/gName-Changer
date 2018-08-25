@@ -9,11 +9,11 @@
 ENT.Base = "base_ai"
 ENT.Type = "ai"
  
-ENT.PrintName		= "RPName Changer"
+ENT.PrintName		= "gNameChanger - NPC"
 ENT.Author			= "Gabyfle"
 ENT.Contact			= "Don't"
 ENT.Category 		= "Gabyfle's Addons"
-ENT.Instructions	= "Appuyez sur E pour changer votre nom RP ( moyennant de l'argent )"
+ENT.Instructions	= "gNameChanger:LangMatch(gNameChanger.Language.entHint)"
 
 ENT.SetAutomaticFrameAdvance = true
 ENT.Spawnable = true

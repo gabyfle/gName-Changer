@@ -8,6 +8,8 @@ gNameChanger.Language = {
 	needRight = "Извините! У вас нет разрешения на смену имени.",
 	noEnts = "Нет энтити для защиты.",
 	entsSaved = "Все NPC были сохранены в {{path}}}",
+	configSaved = "The configuration has been saved.",
+	nameBlacklist = "The name you entered is blacklisted."
 	--[[-------------------------------------------------------------------------
 	CLIENT SIDE TRANSLATIONS
 	---------------------------------------------------------------------------]]
@@ -20,5 +22,9 @@ gNameChanger.Language = {
 	sorry = "У меня нет денег, простите...",
 	secretary = "СЕКРЕТАРЬ",
 	wantChange = "Я хочу изменить свою фамилию и имя!",
-	wrongChoose = "Ой простите, Я ошибся. До свидания!"
+	wrongChoose = "Ой простите, Я ошибся. До свидания!",
+	administration = "ADMINISTRATION",
+	saveConfig = "Save this configuration",
+	blacklist = "Blacklisted names",
+	activeList = "Active blacklist"
 }

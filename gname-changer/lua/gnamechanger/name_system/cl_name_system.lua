@@ -6,25 +6,6 @@
 				Steam : https://steamcommunity.com/id/EpicGaby
 
 -----------------------------------------------------------------------------]]
-surface.CreateFont("roboto-light", {
-	font = "Roboto Light",
-	extended = false,
-	size = 20,
-	weight = 300,
-	blursize = 0,
-	scanlines = 0,
-	antialias = true
-})
-surface.CreateFont("montserrat-medium", {
-	font = "Montserrat Medium",
-	extended = false,
-	size = 25,
-	weight = 500,
-	blursize = 0,
-	scanlines = 0,
-	antialias = true
-})
-
 -- inQuad function, used for Derma_Anim (animations) see more here : https://wiki.garrysmod.com/page/Global/Derma_Anim
 local function inQuad(fraction, beginning, change)
 	return change * (fraction ^ 2) + beginning
@@ -122,7 +103,8 @@ local function nameDerma(panel, ply, npc)
 			  changeBut:SetColor(Color(241, 250, 238))
 			  changeBut:SetFont("roboto-light")
 			  function changeBut:Paint(w, h)
-					draw.RoundedBox(0, 0, 0, w, h, Color(123, 179, 90))
+					surface.SetDrawColor(Color(123, 179, 90))
+					surface.DrawRect(0, 0, w, h)
 			  end
 			  changeBut.DoClick = function()
 					if (nameText:GetValue() == "") then
@@ -131,8 +113,9 @@ local function nameDerma(panel, ply, npc)
 						return false
 					else
 						-- Sending to the server the new name.
-						net.Start("gName_NPC_Changer_name")
-							net.WriteString(nameText:GetValue() .. " " .. lastText:GetValue())
+						net.Start("gNameChanger:NPC:Name")
+							net.WriteString(nameText:GetValue())
+							net.WriteString(lastText:GetValue())
 						net.SendToServer()
 
 						-- Updating the name
@@ -152,7 +135,8 @@ local function nameDerma(panel, ply, npc)
 			  closeBut:SetColor(Color(241, 250, 238))
 			  closeBut:SetFont("roboto-light")
 			  function closeBut:Paint(w, h)
-					draw.RoundedBox(0, 0, 0, w, h, Color(230, 57, 70))
+					surface.SetDrawColor(Color(230, 57, 70))
+					surface.DrawRect(0, 0, w, h)
 			  end
 			  closeBut.DoClick = function()
 			  		panel:SetVisible(true)
@@ -223,7 +207,8 @@ local function mainDerma()
 		  changeBut:SetColor(Color(241, 250, 238))
 		  changeBut:SetFont("roboto-light")
 		  function changeBut:Paint(w, h)
-				draw.RoundedBox(0, 0, 0, w, h, Color(229, 111, 57))
+				surface.SetDrawColor(Color(229, 111, 57))
+				surface.DrawRect(0, 0, w, h)
 		  end
 		  changeBut.DoClick = function()
 		  		frame:SetVisible(false)
@@ -232,15 +217,16 @@ local function mainDerma()
 
 	local closeBut = vgui.Create("DButton", frame)
 		  closeBut:SetText(gNameChanger.Language.wrongChoose)
-		  closeBut:SetPos(10, h - 40 - 10)
+		  closeBut:SetPos(10, h - 50)
 		  closeBut:SetSize(w - 20, 40)
 		  closeBut:SetColor(Color(241, 250, 238))
 		  closeBut:SetFont("roboto-light")
 		  function closeBut:Paint(w, h)
-				draw.RoundedBox(0, 0, 0, w, h, Color(230, 57, 70))
+				surface.SetDrawColor(Color(230, 57, 70))
+				surface.DrawRect(0, 0, w, h)
 		  end
 		  closeBut.DoClick = function()
 		  		frame:Close()
 		  end
 end
-net.Receive("gName_NPC_Changer_panel", mainDerma)
+net.Receive("gNameChanger:NPC:Panel", mainDerma)

@@ -15,15 +15,17 @@ gNameChanger = gNameChanger or {}
 
 -- Permission to access to the command
 gNameChanger.canUseCommands = {
-    "superadmin",
-    "admin",
-    "user"
+    ["superadmin"] = true,
+    ["admin"] = true,
+    ["user"] = true
 }
--- The command to save 
+-- The command to save NPCs
 gNameChanger.saveCommand = "gname_save_all" -- WARNING : using same command has an other addon may causes conflicts
+-- The command to open admin menu
+gNameChanger.adminMenu = "gname_admin" -- WARNING : using same command has an other addon may causes conflicts
 
 -- Language setting
-gNameChanger.lang = "en" -- Available languages : "fr", "en"
+gNameChanger.lang = "en" -- Available languages : "fr", "en", "ru"
 
 -- Device
 gNameChanger.device = "$"
