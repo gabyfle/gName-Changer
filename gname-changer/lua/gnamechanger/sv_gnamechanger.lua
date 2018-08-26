@@ -58,8 +58,11 @@ function gNameChanger:Load()
 	end
 	-- Checking if blacklist.txt exists
 	if not file.Exists("gabyfle-rpname/blacklist.txt", "DATA") then
-		file.Write("gabyfle-rpname/blacklist.txt", "{\"names\":\"\",\"active\":false}") -- Create it if not
+		file.Write("gabyfle-rpname/blacklist.txt", "{\"names\":\" \",\"active\":false}") -- Create it if not
 	end
+
+	-- Loading blacklist configuration
+	self:BlacklistLoad()
 
 	-- Loading entities
 	local data = file.Read(path)	
@@ -75,9 +78,6 @@ function gNameChanger:Load()
 		ent:SetAngles(v.angle)
 		ent:Spawn()
 	end
-
-	-- Loading blacklist configuration
-	self:BlacklistLoad()
 end
 
 --[[-------------------------------------------------------------------------
