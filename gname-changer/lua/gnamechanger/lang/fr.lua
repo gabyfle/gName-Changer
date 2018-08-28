@@ -32,6 +32,6 @@ gNameChanger.Language = {
 	wrongChoose = "Veuillez m'excuser, je me suis trompé. Au revoir !",
 	administration = "ADMINISTRATION",
 	saveConfig = "Sauver cette configuration",
-	blacklist = "Liste noire des noms",
+	blacklist = "Liste noire des mots",
 	activeList = "Activer la liste noire"
 }

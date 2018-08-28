@@ -12,6 +12,7 @@ local function inQuad(fraction, beginning, change)
 end
 
 local function nameDerma(panel, ply, npc)
+	
 	local w, h = ScrW(), 230
 
 	if w < 480 then

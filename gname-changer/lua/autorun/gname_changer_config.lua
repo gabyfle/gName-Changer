@@ -9,6 +9,22 @@
 
 gNameChanger = gNameChanger or {}
 
+--------------------------]]--
+--[[ General Informations ]]--
+--[[--------------------------
+
+	--[ About License ]--
+
+This addon  has  been  released  totally  for  free,  for  DarkRP  servers  owners.
+In  case  of any  reuse,  reloading of  the source code  of  this addon,  I  kindly
+ask you to  credit  me,  as  specified  in  the  license  under  which  this  addon
+is distributed (see: https://github.com/Gabyfle/gName-Changer/blob/master/LICENSE).
+
+	--[ Commiting an Issue ]--
+
+If you find a bug or an exploit while using gNameChanger, please let us know at 
+https://github.com/Gabyfle/gName-Changer/issues, we will be very happy to help you.
+
 ------------------------------
 --[[ NPC General Settings ]]--
 ------------------------------
@@ -26,9 +42,11 @@ gNameChanger.adminMenu = "gname_admin" -- WARNING : using same command has an ot
 
 -- Language setting
 gNameChanger.lang = "en" -- Available languages : "fr", "en", "ru"
-
 -- Device
 gNameChanger.device = "$"
+
+-- Force good caligraphy
+-- gNameChanger.caligraphy = true -- If true, names like géraRD will be changed to Gérard
 
 ----------------------------
 --[[ NPC Theme Settings ]]--

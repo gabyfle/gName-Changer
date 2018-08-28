@@ -22,6 +22,13 @@ This is a simple addon that allow to your players to go to the tawn hall to make
 * A **beautiful admin panel** to config the **blacklist system**
 * **Works with the latest DarkRP version !**
 
+## Planned features
+* **Name change request** on **first** spawn
+* **Themes** system (change theme colors, blur & more)
+* **Admin** force player name change
+* **Force** players to have a proper caligraphy
+* Propose your ideas : https://github.com/Gabyfle/gName-Changer/issues (label : Feature Request)
+
 ## Screenshots
 These screenshots have been taken with the default colors. All colors are changeable.
 
@@ -34,15 +41,15 @@ These screenshots have been taken with the default colors. All colors are change
 
 #### **Home frame** :
 
-![frame](https://image.noelshack.com/fichiers/2018/34/2/1534852811-main-frame.jpg)
+![frame](https://steamuserimages-a.akamaihd.net/ugc/956340815955397127/D53D3C3F14B02DE724F926E1522DC45355479C33/)
 
 #### **RPName changing frame** :
 
-![Name](https://image.noelshack.com/fichiers/2018/34/2/1534852811-change-frame.jpg)
+![Name](https://steamuserimages-a.akamaihd.net/ugc/956340815955396433/259ACFA39F410E64791B36287CA835B3131832B2/)
 
 #### **Blacklist's Admin Panel** :
 
-![Admin Panel](https://steamuserimages-a.akamaihd.net/ugc/956340656727949478/BB0C3C2C2D1D4F6AF053D22CE7033BA2F0A1CE50/)
+![Admin Panel](https://steamuserimages-a.akamaihd.net/ugc/956340815955397127/D53D3C3F14B02DE724F926E1522DC45355479C33/)
 
 ## Installation
 The installation is pretty easy !

@@ -14,7 +14,7 @@ gNameChanger.Language = {
 	needMoney = "Sorry ! You don't have enough money to change your name!",
 	needRight = "Sorry ! You do not have the necessary authorization to use this command.",
 	noEnts = "There is no entity to safeguard.",
-	entsSaved = "All NPCs were saved in {{path}}}",
+	entsSaved = "All NPCs were saved in {{path}}",
 	configSaved = "The configuration has been saved.",
 	nameBlacklist = "The name you entered is blacklisted.",
 	--[[-------------------------------------------------------------------------
@@ -32,6 +32,6 @@ gNameChanger.Language = {
 	wrongChoose = "If you'll excuse me, I was wrong. Goodbye!",
 	administration = "ADMINISTRATION",
 	saveConfig = "Save this configuration",
-	blacklist = "Blacklisted names",
+	blacklist = "Blacklisted words",
 	activeList = "Active blacklist"
 }

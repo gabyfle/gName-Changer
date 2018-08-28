@@ -16,22 +16,22 @@ function gNameChanger:Init()
 	local default = nil
 	if SERVER then
 		-- Loading language file
-		if not file.Exists("gnamechanger/lang/" .. gNameChanger.lang .. ".lua", "LUA") then
-			-- Default language is French
-			include("gnamechanger/lang/fr.lua")
-			AddCSLuaFile("gnamechanger/lang/fr.lua")
+		if not file.Exists("gnamechanger/lang/" .. self.lang .. ".lua", "LUA") then
+			-- Default language is English
+			include("gnamechanger/lang/en.lua")
+			AddCSLuaFile("gnamechanger/lang/en.lua")
 
 			default = 1
 		else
-			include("gnamechanger/lang/" .. gNameChanger.lang .. ".lua")
-			AddCSLuaFile("gnamechanger/lang/" .. gNameChanger.lang .. ".lua")
+			include("gnamechanger/lang/" .. self.lang .. ".lua")
+			AddCSLuaFile("gnamechanger/lang/" .. self.lang .. ".lua")
 		end
 	end
 	if CLIENT then -- Including language file on clientside
 		if not default then
-			include("gnamechanger/lang/" .. gNameChanger.lang .. ".lua")
+			include("gnamechanger/lang/" .. self.lang .. ".lua")
 		else
-			include("gnamechanger/lang/fr.lua")
+			include("gnamechanger/lang/en.lua")
 		end
 	end
 	if SERVER then
@@ -53,13 +53,13 @@ function gNameChanger:Init()
 		print(" *=======================* ")
 	end
 	-- Save NPCs command
-	concommand.Add(gNameChanger.saveCommand, function(ply, cmd, args)
+	concommand.Add(self.saveCommand, function(ply, cmd, args)
 		if SERVER then
 			self:Save(ply)
 		end
 	end)
 	-- Admin menu command
-	concommand.Add(gNameChanger.adminMenu, function(ply, cmd, args)
+	concommand.Add(self.adminMenu, function(ply, cmd, args)
 		if SERVER then
 			self:AdminPanel(ply)
 		end
@@ -77,11 +77,11 @@ function gNameChanger:LangMatch(stringLang)
 	if CLIENT then ply = LocalPlayer() end
 	
 	local vars = {
-		["delay"] = gNameChanger.delay,
+		["delay"] = self.delay,
 		["path"] = path,
 		["key_use"] = IN_USE,
-		["price"] = gNameChanger.price,
-		["device"] = gNameChanger.device		
+		["price"] = self.price,
+		["device"] = self.device
 	}
 	if CLIENT then vars["plyname"] = ply:Nick() end
 	

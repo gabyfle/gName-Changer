@@ -1,3 +1,11 @@
+--[[---------------------------------------------------------------------------
+
+                        gName-Changer | LANGUAGE FILE
+                This addon has been created & released for free
+                                   by Gaby
+                Steam : https://steamcommunity.com/id/EpicGaby
+
+-----------------------------------------------------------------------------]]
 -- Russian translation by : https://gmod.facepunch.com/u/usfs/qFamouse/
 gNameChanger.Language = {
 	--[[-------------------------------------------------------------------------
@@ -7,7 +15,7 @@ gNameChanger.Language = {
 	needMoney = "Извините! У вас недостаточно денег, чтобы изменить свое имя!",
 	needRight = "Извините! У вас нет разрешения на смену имени.",
 	noEnts = "Нет энтити для защиты.",
-	entsSaved = "Все NPC были сохранены в {{path}}}",
+	entsSaved = "Все NPC были сохранены в {{path}}",
 	configSaved = "The configuration has been saved.",
 	nameBlacklist = "The name you entered is blacklisted."
 	--[[-------------------------------------------------------------------------
@@ -25,6 +33,6 @@ gNameChanger.Language = {
 	wrongChoose = "Ой простите, Я ошибся. До свидания!",
 	administration = "ADMINISTRATION",
 	saveConfig = "Save this configuration",
-	blacklist = "Blacklisted names",
+	blacklist = "Blacklisted words",
 	activeList = "Active blacklist"
 }

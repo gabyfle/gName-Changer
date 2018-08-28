@@ -15,8 +15,8 @@ local path = "gabyfle-rpname/npc_rpname_pos_" .. game.GetMap() .. ".txt"
 ---------------------------------------------------------------------------]]
 function gNameChanger:getRights(ply)
 	-- Checking if player has the apropriate rank
-	if not gNameChanger.canUseCommands[ply:GetUserGroup()] then
-		DarkRP.notify(ply, 1, 15, gNameChanger:LangMatch(gNameChanger.Language.needRight))
+	if not self.canUseCommands[ply:GetUserGroup()] then
+		DarkRP.notify(ply, 1, 15, self:LangMatch(self.Language.needRight))
 		return false
 	end
 
@@ -34,13 +34,13 @@ function gNameChanger:BlacklistLoad()
 	local tb = util.JSONToTable(data)
 
 	if not tb then
-		gNameChanger.blacklisted = ""
-		gNameChanger.blacklist_active = false
+		self.blacklisted = ""
+		self.blacklist_active = false
 		return
 	end
 
-	gNameChanger.blacklisted = tb.names
-	gNameChanger.blacklist_active = tb.active
+	self.blacklisted = tb.names
+	self.blacklist_active = tb.active
 end
 
 --[[-------------------------------------------------------------------------
@@ -58,7 +58,7 @@ function gNameChanger:Load()
 	end
 	-- Checking if blacklist.txt exists
 	if not file.Exists("gabyfle-rpname/blacklist.txt", "DATA") then
-		file.Write("gabyfle-rpname/blacklist.txt", "{\"names\":\" \",\"active\":false}") -- Create it if not
+		file.Write("gabyfle-rpname/blacklist.txt", "{\"names\":\"\",\"active\":false}") -- Create it if not
 	end
 
 	-- Loading blacklist configuration
@@ -85,14 +85,14 @@ end
 		Save the current NPCs locations to npc_pos_map data file.
 ---------------------------------------------------------------------------]]
 function gNameChanger:Save(ply)
-	if not gNameChanger:getRights(ply) then return end
+	if not self:getRights(ply) then return end
 
 	local entities = ents.FindByClass("npc_gname_changer") -- All npc_gname_changer entities
 
 	-- If there isn't any npc_gname_changer entity
 	local number = #entities
 	if number == 0 then
-		DarkRP.notify(ply, 1, 15, gNameChanger:LangMatch(gNameChanger.Language.noEnts))
+		DarkRP.notify(ply, 1, 15, self:LangMatch(self.Language.noEnts))
 
 		return
 	end
@@ -105,5 +105,5 @@ function gNameChanger:Save(ply)
 	-- Write JSON converted table to data file
 	file.Write(path, util.TableToJSON(data))
 
-	DarkRP.notify(ply, 3, 15, gNameChanger:LangMatch(gNameChanger.Language.entsSaved))
+	DarkRP.notify(ply, 3, 15, self:LangMatch(self.Language.entsSaved))
 end

@@ -15,11 +15,11 @@ util.AddNetworkString("gNameChanger:Admin:Save")
 		Send configuration table to the client
 ---------------------------------------------------------------------------]]
 function gNameChanger:AdminPanel(ply)
-	if not gNameChanger:getRights(ply) then return end
+	if not self:getRights(ply) then return end
 
 	local tb = {
-		active = gNameChanger.blacklist_active,
-		names = gNameChanger.blacklisted
+		active = self.blacklist_active,
+		names = self.blacklisted
 	}
 
 	net.Start("gNameChanger:Admin:Panel")
@@ -33,8 +33,8 @@ end
 		[If player get rights, launch AdminPanel() func]
 ---------------------------------------------------------------------------]]
 function gNameChanger:AdminChat(ply, text)
-	if (string.lower(text) == "!" .. gNameChanger.adminMenu) then
-		if not gNameChanger:getRights(ply) then return "" end
+	if (string.lower(text) == "!" .. self.adminMenu) then
+		if not self:getRights(ply) then return "" end
 
 		self:AdminPanel(ply)
 
@@ -48,7 +48,7 @@ end
 		Load the new configuration
 ---------------------------------------------------------------------------]]
 function gNameChanger:AdminSave(ply)
-	if not gNameChanger:getRights(ply) then return end
+	if not self:getRights(ply) then return end
 
 	local config = { }
 		config.active = net.ReadBool()
@@ -59,7 +59,7 @@ function gNameChanger:AdminSave(ply)
 	-- Loading new configuration
 	self:BlacklistLoad()
 
-	DarkRP.notify(ply, 3, 15, gNameChanger.Language.configSaved)
+	DarkRP.notify(ply, 3, 15, self.Language.configSaved)
 end
 
 hook.Add("PlayerSay", "gNameChanger:AdminMenu", function(ply, text, team)
