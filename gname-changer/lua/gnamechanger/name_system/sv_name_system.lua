@@ -75,6 +75,12 @@ function gNameChanger:rpNameChange(len, ply)
 	
 	local firstname = net.ReadString()
 	local lastname = net.ReadString()
+	
+    	local canChangeName, reason = hook.Call("CanChangeRPName", GAMEMODE, ply, firstname .. " " .. lastname)
+    	if canChangeName == false then
+        	DarkRP.notify(ply, 1, 4, DarkRP.getPhrase("unable", "RPname", reason or ""))
+        	return
+	end
 
 	if self:isBlacklisted(firstname, lastname) then
 		DarkRP.notify(ply, 1, 15, self.Language.nameBlacklist)	
