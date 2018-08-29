@@ -10,23 +10,25 @@ An essential addon for your **[DarkRP](http://darkrp.com/)** server !
 This is a simple addon that allow to your players to go to the tawn hall to make a request for a name change.
 
 ## Features
-* **Clean**, **elegant** and **beautiful** dermas
-* **Smooth animations**
 * **Easy** setup
-* A **complete** config file : change *colors*, *models* and *more* !
-* [**HOT**] *Responsive* panels ! (**fixed**!)
-* **Anti-spam** protection! (*configurable*)
-* [**HOT**] **Save** the NPCs position! (command: `gname_save_all` [configurable])
-* **Protection against smarties** trying to use derma without going through the NPC.
-* [**HOT**] An incredible **blacklist system** to block unwanted names and **facilitate your administration**!
-* A **beautiful admin panel** to config the **blacklist system**
+  * [**HOT**] **Save** the NPCs position! (command: `gname_save_all` [configurable])
+  * A **complete** config file : change *colors*, *models* and *more* !
+* A **nice UI**
+  * **Clean**, **elegant** and **beautiful** dermas
+  * **Smooth animations**
+  * [**HOT**] *Responsive* panels ! (**fixed**!)
+* **Facilitate your administration**
+  * **Anti-spam** protection! (*configurable*)
+  * **Protection against smarties** trying to use derma without going through the NPC.
+  * [**HOT**] An incredible **blacklist system** to block unwanted names and **facilitate your administration**!
+  * A **beautiful admin panel** to config the **blacklist system**
+  * **Force** player to have a **proper** caligraphy (*configurable*)
 * **Works with the latest DarkRP version !**
 
 ## Planned features
 * **Name change request** on **first** spawn
 * **Themes** system (change theme colors, blur & more)
 * **Admin** force player name change
-* **Force** players to have a proper caligraphy
 * Propose your ideas : https://github.com/Gabyfle/gName-Changer/issues (label : Feature Request)
 
 ## Screenshots
@@ -41,7 +43,7 @@ These screenshots have been taken with the default colors. All colors are change
 
 #### **Home frame** :
 
-![frame](https://steamuserimages-a.akamaihd.net/ugc/956340815955397127/D53D3C3F14B02DE724F926E1522DC45355479C33/)
+![frame](https://steamuserimages-a.akamaihd.net/ugc/956340815955395423/3749F5F2C95C0F778F3C0689B0ABB60E5EBAE568/)
 
 #### **RPName changing frame** :
 

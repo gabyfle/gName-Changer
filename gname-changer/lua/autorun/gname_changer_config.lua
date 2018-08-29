@@ -46,7 +46,7 @@ gNameChanger.lang = "en" -- Available languages : "fr", "en", "ru"
 gNameChanger.device = "$"
 
 -- Force good caligraphy
--- gNameChanger.caligraphy = true -- If true, names like géraRD will be changed to Gérard
+gNameChanger.caligraphy = true -- If true, names like géRaRD, gérard or GérArD will be changed to Gérard
 
 ----------------------------
 --[[ NPC Theme Settings ]]--

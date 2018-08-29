@@ -8,6 +8,21 @@
 -----------------------------------------------------------------------------]]
 
 --[[-------------------------------------------------------------------------
+	string, string goodCaligraphy(string firstname, string lastname) : 
+		Returns the character strings entered in parameter under a 
+		good caligraphy (first letter in upper case, then in lower case)
+---------------------------------------------------------------------------]]
+function gNameChanger:goodCaligraphy(firstname, lastname)
+	-- First, be sure that everything is lower-cased
+	firstname, lastname = string.lower(firstname), string.lower(lastname)
+	-- Now uppercase only first letter
+	firstname = string.gsub(firstname, "^%a", string.upper)
+	lastname = string.gsub(lastname, "^%a", string.upper)
+
+	return firstname, lastname
+end
+
+--[[-------------------------------------------------------------------------
 	bool isBlacklisted(string firstname, string lastname) : 
 		Returns false if string isn't blacklisted, true if
 ---------------------------------------------------------------------------]]
@@ -56,16 +71,18 @@ end
 		Changes the darkrp Name of a player given in arg
 ---------------------------------------------------------------------------]]
 function gNameChanger:rpNameChange(len, ply)
-	if not self:canChange(ply) then
-		return
-	end
+	if not self:canChange(ply) then return end
 	
 	local firstname = net.ReadString()
 	local lastname = net.ReadString()
 
 	if self:isBlacklisted(firstname, lastname) then
-		DarkRP.notify(ply, 1, 15, self.Language.nameBlacklist)
+		DarkRP.notify(ply, 1, 15, self.Language.nameBlacklist)	
 		return
+	end
+
+	if self.caligraphy then
+		firstname, lastname = self:goodCaligraphy(firstname, lastname)
 	end
 
 	local name = firstname .. " " .. lastname
