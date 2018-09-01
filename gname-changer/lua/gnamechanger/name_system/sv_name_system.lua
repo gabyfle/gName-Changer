@@ -14,10 +14,10 @@
 ---------------------------------------------------------------------------]]
 function gNameChanger:goodCaligraphy(firstname, lastname)
 	-- First, be sure that everything is lower-cased
-	firstname, lastname = string.lower(firstname), string.lower(lastname)
+	firstname, lastname = firstname:lower(), lastname:lower()
 	-- Now uppercase only first letter
-	firstname = string.gsub(firstname, "^%a", string.upper)
-	lastname = string.gsub(lastname, "^%a", string.upper)
+	firstname = firstname:gsub("%a", string.upper, 1)
+	lastname = lastname:gsub("%a", string.upper, 1)
 
 	return firstname, lastname
 end
@@ -84,9 +84,8 @@ function gNameChanger:rpNameChange(len, ply, first, npc)
 	
 	local firstname = net.ReadString()
 	local lastname = net.ReadString()
-	local name = firstname .. " " .. lastname
 
-	local canChangeName, reason = hook.Call("CanChangeRPName", GAMEMODE, ply, name)
+	local canChangeName, reason = hook.Call("CanChangeRPName", GAMEMODE, ply, firstname .. " " .. lastname)
 	if canChangeName == false then
 		DarkRP.notify(ply, 1, 4, DarkRP.getPhrase("unable", "RPname", reason or ""))
 		return false
@@ -100,6 +99,8 @@ function gNameChanger:rpNameChange(len, ply, first, npc)
 	if self.caligraphy then
 		firstname, lastname = self:goodCaligraphy(firstname, lastname)
 	end
+
+	local name = firstname .. " " .. lastname
 
 	if first == true then
 		DarkRP.retrieveRPNames(name, function(taken)
