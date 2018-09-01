@@ -5,12 +5,13 @@ An essential addon for your **[DarkRP](http://darkrp.com/)** server !
 ## Informations
 > This addon don't come with any warrantly. It's a completly free addon.
 >
-> **If you find a bug, you can report it in the "Issues" sections of this repositery**
+> **If you find a bug, you can report it in the "Issues" section of this repositery**
 
-This is a simple addon that allow to your players to go to the tawn hall to make a request for a name change.
+This is a simple addon that allow to your players to go to the tawn hall to make a request for a name change. It comes with an Admin panel and few admins commands to make your administration easier.
 
 ## Features
 * **First spawn** name change request *[* **BETA** *]*
+  * Configurable (*active* / *disable*)
   * **Nice** blurred overlay, with community name and description
 * **Easy** setup
   * [**HOT**] **Save** the NPCs position! (command: `gname_save_all` [configurable])

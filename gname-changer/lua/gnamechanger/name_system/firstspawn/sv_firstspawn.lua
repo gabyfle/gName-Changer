@@ -17,6 +17,7 @@ end
 
 function gNameChanger:checkName(len, ply)
 	if not IsValid(ply) or not ply:IsPlayer() then return end
+	if not self.firstSpawn then return end
 	if ply.gNameLastNameChange then return end -- Already used a name change
 
 	local success = self:rpNameChange(len, ply, true, false)
@@ -30,5 +31,7 @@ net.Receive("gNameChanger:SPAWN:Name", function(len, ply)
 end)
 
 hook.Add("PlayerInitialSpawn", "gNameChanger:SPAWN:Hook", function(ply)
-	gNameChanger:sendPanel(ply)
+	if gNameChanger.firstSpawn then
+		gNameChanger:sendPanel(ply)
+	end
 end)

@@ -30,7 +30,7 @@ https://github.com/Gabyfle/gName-Changer/issues, we will be very happy to help y
 --------------------------
 -- Your community name
 gNameChanger.communityName = "Gabyfle's Addons"
--- Comminity name font familly
+-- Community name font familly
 gNameChanger.communityFont = "viksi-script" -- WARNING : To change that, you have to install a custom font on your server
 -- Your community description
 gNameChanger.communityDesc = "Welcome to our biggest DarkRP server. Have fun and enjoy playing!"
@@ -53,6 +53,9 @@ gNameChanger.device = "$"
 
 -- Force good caligraphy
 gNameChanger.caligraphy = true -- If true, names like géRaRD, gérard or GérArD will be changed to Gérard
+
+-- First spawn name change (asking player to change his name on his first spawn ?)
+gNameChanger.firstSpawn = true -- true = activated | false = disabled
 
 --------------------------------
 --[[ Windows Theme Settings ]]--
