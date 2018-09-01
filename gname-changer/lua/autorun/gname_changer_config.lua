@@ -22,12 +22,18 @@ is distributed (see: https://github.com/Gabyfle/gName-Changer/blob/master/LICENS
 
 	--[ Commiting an Issue ]--
 
-If you find a bug or an exploit while using gNameChanger, please let us know at 
+If you find a bug or an  exploit while  using gNameChanger, please let us  know  at
 https://github.com/Gabyfle/gName-Changer/issues, we will be very happy to help you.
 
-------------------------------
---[[ NPC General Settings ]]--
-------------------------------
+--------------------------
+--[[ General Settings ]]--
+--------------------------
+-- Your community name
+gNameChanger.communityName = "Gabyfle's Addons"
+-- Comminity name font familly
+gNameChanger.communityFont = "viksi-script" -- WARNING : To change that, you have to install a custom font on your server
+-- Your community description
+gNameChanger.communityDesc = "Welcome to our biggest DarkRP server. Have fun and enjoy playing!"
 
 -- Permission to access to the command
 gNameChanger.canUseCommands = {
@@ -48,16 +54,19 @@ gNameChanger.device = "$"
 -- Force good caligraphy
 gNameChanger.caligraphy = true -- If true, names like géRaRD, gérard or GérArD will be changed to Gérard
 
-----------------------------
---[[ NPC Theme Settings ]]--
-----------------------------
-
--- Model of the NPC
-gNameChanger.model = "models/gman.mdl" -- Default GMAN model
--- Derma color
+--------------------------------
+--[[ Windows Theme Settings ]]--
+--------------------------------
+	--[[ GUI ]]--
+-- Main colors (brackground)
 gNameChanger.dermaColor = Color(29, 53, 87) -- Got a color in hexagonal form? http://www.color-hex.com
--- 3D2D CAM Color
+-- Font color
+gNameChanger.dermaFontColor = Color(241, 250, 238) -- Got a color in hexagonal form? http://www.color-hex.com
+	--[[ 3D2D ]]--
+-- 3D2D CAM Background color
 gNameChanger.camColor = Color(29, 53, 87, 230) -- Got a color in hexagonal form? http://www.color-hex.com
+-- Font color
+gNameChanger.camFontColor = Color(241, 250, 238) -- Got a color in hexagonal form? http://www.color-hex.com
 
 ---------------------------
 --[[ SOME FUNNY COLORS ]]--
@@ -70,6 +79,8 @@ gNameChanger.camColor = Color(29, 53, 87, 230) -- Got a color in hexagonal form?
 ----------------------
 --[[ NPC Settings ]]--
 ----------------------
+-- Model of the NPC
+gNameChanger.model = "models/gman.mdl" -- Default GMAN model
 -- The price players will pay to change their name
 gNameChanger.price = 1000
 -- Minimum delay between two name change (in seconds)

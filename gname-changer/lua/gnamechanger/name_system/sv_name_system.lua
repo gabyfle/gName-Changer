@@ -46,18 +46,23 @@ function gNameChanger:isBlacklisted(firstname, lastname)
 end
 
 --[[-------------------------------------------------------------------------
-	bool canChange(Player ply) : 
+	bool canChange(Player ply, bool npc = true) : 
 		Returns true if the user can change his RPName, false if not
 ---------------------------------------------------------------------------]]
-function gNameChanger:canChange(ply)
+function gNameChanger:canChange(ply, npc)
+	if npc == nil then npc = true end
+
 	-- Player is launching derma without using entity (or player is too far from entity)
-	if not ply.usedNPC or not (ply.usedNPC:GetPos():DistToSqr(ply:GetPos()) < self.distance^2) then
-		return false
+	if npc == true then
+		if not ply.usedNPC or not (ply.usedNPC:GetPos():DistToSqr(ply:GetPos()) < self.distance^2) then
+			return false
+		end
 	end
 
 	-- The countdown isn't finished
 	if not ply.gNameLastNameChange then return true end
 	local possible = ply.gNameLastNameChange + self.delay
+
 	if CurTime() < possible then 
 		DarkRP.notify(ply, 1, 15, self:LangMatch(self.Language.needWait))
 		return false
@@ -67,47 +72,68 @@ function gNameChanger:canChange(ply)
 end
 
 --[[-------------------------------------------------------------------------
-	void rpNameChange(number len, Player ply) : 
+	bool rpNameChange(number len, Player ply, bool first = false, bool npc = true) : 
 		Changes the darkrp Name of a player given in arg
+		return true if name was changed succesfully, false if not
 ---------------------------------------------------------------------------]]
-function gNameChanger:rpNameChange(len, ply)
-	if not self:canChange(ply) then return end
+function gNameChanger:rpNameChange(len, ply, first, npc)
+	if first == nil then first = false end
+	if npc == nil then npc = true end
+
+	if not self:canChange(ply, npc) then return false end
 	
 	local firstname = net.ReadString()
 	local lastname = net.ReadString()
-	
-    	local canChangeName, reason = hook.Call("CanChangeRPName", GAMEMODE, ply, firstname .. " " .. lastname)
-    	if canChangeName == false then
-        	DarkRP.notify(ply, 1, 4, DarkRP.getPhrase("unable", "RPname", reason or ""))
-        	return
+	local name = firstname .. " " .. lastname
+
+	local canChangeName, reason = hook.Call("CanChangeRPName", GAMEMODE, ply, name)
+	if canChangeName == false then
+		DarkRP.notify(ply, 1, 4, DarkRP.getPhrase("unable", "RPname", reason or ""))
+		return false
 	end
 
 	if self:isBlacklisted(firstname, lastname) then
-		DarkRP.notify(ply, 1, 15, self.Language.nameBlacklist)	
-		return
+		DarkRP.notify(ply, 1, 15, self.Language.nameBlacklist)
+		return false
 	end
 
 	if self.caligraphy then
 		firstname, lastname = self:goodCaligraphy(firstname, lastname)
 	end
 
-	local name = firstname .. " " .. lastname
-
-	if not ply:canAfford(self.price) then
-		DarkRP.notify(ply, 1, 15, self:LangMatch(self.Language.needMoney))
-		return
-	else		
+	if first == true then
 		DarkRP.retrieveRPNames(name, function(taken)
 			if taken then
 				DarkRP.notify(ply, 1, 5, DarkRP.getPhrase("unable", "RPname", DarkRP.getPhrase("already_taken")))
+				return false
 			else
-				ply:addMoney(-self.price)
-
 				DarkRP.storeRPName(ply, name)
 				ply:setDarkRPVar("rpname", name)
 				DarkRP.notifyAll(2, 6, DarkRP.getPhrase("rpname_changed", ply:SteamName(), name))
+				return true
 			end
 		end)
+
+		return true
+	else
+		if not ply:canAfford(self.price) then
+			DarkRP.notify(ply, 1, 15, self:LangMatch(self.Language.needMoney))
+			return false
+		else
+			DarkRP.retrieveRPNames(name, function(taken)
+				if taken then
+					DarkRP.notify(ply, 1, 5, DarkRP.getPhrase("unable", "RPname", DarkRP.getPhrase("already_taken")))
+					return false
+				else
+					ply:addMoney(-self.price)
+
+					DarkRP.storeRPName(ply, name)
+					ply:setDarkRPVar("rpname", name)
+					DarkRP.notifyAll(2, 6, DarkRP.getPhrase("rpname_changed", ply:SteamName(), name))
+					return true
+				end
+			end)
+		end
 	end
 
 	ply.gNameLastNameChange = CurTime()

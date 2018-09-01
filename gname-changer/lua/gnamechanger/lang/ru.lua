@@ -34,5 +34,7 @@ gNameChanger.Language = {
 	administration = "ADMINISTRATION",
 	saveConfig = "Save this configuration",
 	blacklist = "Blacklisted words",
-	activeList = "Active blacklist"
+	activeList = "Active blacklist",
+	chooseName = "NAME SELECTION",
+	chooseBut = "That's my name, I think."
 }

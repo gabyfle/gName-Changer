@@ -10,6 +10,8 @@ An essential addon for your **[DarkRP](http://darkrp.com/)** server !
 This is a simple addon that allow to your players to go to the tawn hall to make a request for a name change.
 
 ## Features
+* **First spawn** name change request *[* **BETA** *]*
+  * **Nice** blurred overlay, with community name and description
 * **Easy** setup
   * [**HOT**] **Save** the NPCs position! (command: `gname_save_all` [configurable])
   * A **complete** config file : change *colors*, *models* and *more* !
@@ -26,13 +28,16 @@ This is a simple addon that allow to your players to go to the tawn hall to make
 * **Works with the latest DarkRP version !**
 
 ## Planned features
-* **Name change request** on **first** spawn
 * **Themes** system (change theme colors, blur & more)
 * **Admin** force player name change
 * Propose your ideas : https://github.com/Gabyfle/gName-Changer/issues (label : Feature Request)
 
 ## Screenshots
 These screenshots have been taken with the default colors. All colors are changeable.
+
+#### **First spawn name change request**
+
+![overlay](https://steamuserimages-a.akamaihd.net/ugc/958593001512576323/DFA1A6FEB9883F59A98837A9251D3734CB68B7E5/)
 
 #### **3D2D NPC's title** :
 

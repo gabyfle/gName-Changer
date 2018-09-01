@@ -24,3 +24,11 @@ surface.CreateFont("montserrat-medium", {
 	scanlines = 0,
 	antialias = true
 })
+surface.CreateFont("viksi-script", {
+	font = "Viksi Script",
+	extended = false,
+	size = 60,
+	blursize = 0,
+	scanlines = 0,
+	antialias = true
+})
