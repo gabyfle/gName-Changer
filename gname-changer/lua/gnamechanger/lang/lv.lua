@@ -34,5 +34,7 @@ gNameChanger.Language = {
 	administration = "ADMINISTRĀCIJA.",
 	saveConfig = "Saglabāt šo konfigurāciju.",
 	blacklist = "Neatļautie vārdi.",
-	activeList = "Aktīvie neatļautie vārdi."
+	activeList = "Aktīvie neatļautie vārdi.",
+	chooseName = "NAME SELECTION",
+	chooseBut = "That's my name, I think."
 }
