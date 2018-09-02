@@ -28,7 +28,7 @@ end
 function gNameChanger:getRights(ply)
 	-- Checking if player has the apropriate rank
 	if not self.canUseCommands[ply:GetUserGroup()] then
-		DarkRP.notify(ply, 1, 15, self:LangMatch(self.Language.needRight))
+		DarkRP.notify(ply, 1, 6, self:LangMatch(self.Language.needRight))
 		return false
 	end
 
@@ -103,7 +103,7 @@ function gNameChanger:Save(ply)
 	-- If there isn't any npc_gname_changer entity
 	local number = #gNameChanger.NPCs
 	if number == 0 then
-		DarkRP.notify(ply, 1, 15, self:LangMatch(self.Language.noEnts))
+		DarkRP.notify(ply, 1, 6, self:LangMatch(self.Language.noEnts))
 
 		return
 	end
@@ -116,7 +116,7 @@ function gNameChanger:Save(ply)
 	-- Write JSON converted table to data file
 	file.Write(path, util.TableToJSON(data))
 
-	DarkRP.notify(ply, 3, 15, self:LangMatch(self.Language.entsSaved))
+	DarkRP.notify(ply, 3, 6, self:LangMatch(self.Language.entsSaved))
 end
 
 --[[-------------------------------------------------------------------------

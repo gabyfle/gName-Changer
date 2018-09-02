@@ -64,7 +64,7 @@ function gNameChanger:canChange(ply, npc)
 	local possible = ply.gNameLastNameChange + self.delay
 
 	if CurTime() < possible then 
-		DarkRP.notify(ply, 1, 15, self:LangMatch(self.Language.needWait))
+		DarkRP.notify(ply, 1, 6, self:LangMatch(self.Language.needWait))
 		return false
 	end
 
@@ -92,7 +92,7 @@ function gNameChanger:rpNameChange(len, ply, first, npc)
 	end
 
 	if self:isBlacklisted(firstname, lastname) then
-		DarkRP.notify(ply, 1, 15, self.Language.nameBlacklist)
+		DarkRP.notify(ply, 1, 6, self.Language.nameBlacklist)
 		return false
 	end
 
@@ -111,7 +111,9 @@ function gNameChanger:rpNameChange(len, ply, first, npc)
 			else
 				DarkRP.storeRPName(ply, name)
 				ply:setDarkRPVar("rpname", name)
-				DarkRP.notifyAll(2, 6, DarkRP.getPhrase("rpname_changed", ply:SteamName(), name))
+				if gNameChanger.globalNotify then
+					DarkRP.notifyAll(2, 6, DarkRP.getPhrase("rpname_changed", ply:SteamName(), name))
+				end
 				success = true
 				return true
 			end
@@ -120,7 +122,7 @@ function gNameChanger:rpNameChange(len, ply, first, npc)
 		return success
 	else
 		if not ply:canAfford(self.price) then
-			DarkRP.notify(ply, 1, 15, self:LangMatch(self.Language.needMoney))
+			DarkRP.notify(ply, 1, 6, self:LangMatch(self.Language.needMoney))
 			return false
 		else
 			DarkRP.retrieveRPNames(name, function(taken)
@@ -132,7 +134,9 @@ function gNameChanger:rpNameChange(len, ply, first, npc)
 
 					DarkRP.storeRPName(ply, name)
 					ply:setDarkRPVar("rpname", name)
-					DarkRP.notifyAll(2, 6, DarkRP.getPhrase("rpname_changed", ply:SteamName(), name))
+					if gNameChanger.globalNotify then
+						DarkRP.notifyAll(2, 6, DarkRP.getPhrase("rpname_changed", ply:SteamName(), name))
+					end
 					return true
 				end
 			end)

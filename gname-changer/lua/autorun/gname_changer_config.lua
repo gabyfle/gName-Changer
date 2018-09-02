@@ -59,11 +59,14 @@ gNameChanger.caligraphy = true -- If true, names like géRaRD, gérard or GérAr
 -- First spawn name change (asking player to change his name on his first spawn ?)
 gNameChanger.firstSpawn = false -- true = activated | false = disabled
 
+-- Active / Disable global notifications for name changing
+gNameChanger.globalNotify = true -- true = activated | false = disabled
+
 --------------------------------
 --[[ Windows Theme Settings ]]--
 --------------------------------
 	--[[ GUI ]]--
--- Main colors (brackground)
+-- Main colors (background)
 gNameChanger.dermaColor = Color(29, 53, 87) -- Got a color in hexagonal form? http://www.color-hex.com
 -- Font color
 gNameChanger.dermaFontColor = Color(241, 250, 238) -- Got a color in hexagonal form? http://www.color-hex.com
