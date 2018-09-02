@@ -64,6 +64,12 @@ function gNameChanger:Init()
 			self:AdminPanel(ply)
 		end
 	end)
+	-- Admin force name change command
+	concommand.Add(self.adminForce, function(ply, cmd, args)
+		if SERVER then
+			self:AdminForce(ply, args)
+		end
+	end)
 end
 
 --[[-------------------------------------------------------------------------

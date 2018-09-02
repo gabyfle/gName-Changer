@@ -8,7 +8,18 @@
 -----------------------------------------------------------------------------]]
 local path = "gabyfle-rpname/npc_rpname_pos_" .. game.GetMap() .. ".txt"
 
+--[[-------------------------------------------------------------------------
+	table<string> getArgs(string command) : 
+		Helper function
+		Returns the arguments of a given command in a table
+---------------------------------------------------------------------------]]
+function gNameChanger:getArgs(text)
+	local arguments = string.Split(text, " ")
+	-- Removing the command string
+	table.remove(arguments, 1)
 
+	return arguments
+end
 --[[-------------------------------------------------------------------------
 	bool getRights(Player ply) : 
 		Returns false if the user does not have administration rights, true if he has them.

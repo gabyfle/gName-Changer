@@ -45,9 +45,11 @@ gNameChanger.canUseCommands = {
 gNameChanger.saveCommand = "gname_save_all" -- WARNING : using same command has an other addon may causes conflicts
 -- The command to open admin menu
 gNameChanger.adminMenu = "gname_admin" -- WARNING : using same command has an other addon may causes conflicts
+-- The command to fore a player to change his rp name
+gNameChanger.adminForce = "gname_force" -- WARNING : using same command has an other addon may causes conflicts
 
 -- Language setting
-gNameChanger.lang = "en" -- Available languages : "fr", "en", "ru"
+gNameChanger.lang = "en" -- Available languages : "fr", "en", "ru", "lv"
 -- Device
 gNameChanger.device = "$"
 
@@ -55,7 +57,7 @@ gNameChanger.device = "$"
 gNameChanger.caligraphy = true -- If true, names like géRaRD, gérard or GérArD will be changed to Gérard
 
 -- First spawn name change (asking player to change his name on his first spawn ?)
-gNameChanger.firstSpawn = true -- true = activated | false = disabled
+gNameChanger.firstSpawn = false -- true = activated | false = disabled
 
 --------------------------------
 --[[ Windows Theme Settings ]]--
@@ -87,6 +89,6 @@ gNameChanger.model = "models/gman.mdl" -- Default GMAN model
 -- The price players will pay to change their name
 gNameChanger.price = 1000
 -- Minimum delay between two name change (in seconds)
-gNameChanger.delay = 120 -- Obviously, 0 cancels the delay
+gNameChanger.delay = 0 -- Obviously, 0 cancels the delay
 -- Maximum distance to access to the NPC (in units)
 gNameChanger.distance = 300

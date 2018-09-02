@@ -17,6 +17,7 @@ gNameChanger.Language = {
 	entsSaved = "Tous les NPCs ont étés sauvegardés dans {{path}}",
 	configSaved = "La configuration a bien été sauvegardée.",
 	nameBlacklist = "Le nom que vous avez entré est sur liste noire.",
+	forced = "Un administrateur vous a forcé à changer votre nom.",
 	--[[-------------------------------------------------------------------------
 	CLIENT SIDE TRANSLATIONS
 	---------------------------------------------------------------------------]]

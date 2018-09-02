@@ -9,6 +9,8 @@ An essential addon for your **[DarkRP](http://darkrp.com/)** server !
 
 This is a simple addon that allow to your players to go to the tawn hall to make a request for a name change. It comes with an Admin panel and few admins commands to make your administration easier.
 
+[![](https://img.youtube.com/vi/MT9mKqKGYrE/0.jpg)](http://www.youtube.com/watch?v=MT9mKqKGYrE "Click to play on Youtube.com")
+
 ## Features
 * **First spawn** name change request *[* **BETA** *]*
   * Configurable (*active* / *disable*)
@@ -26,11 +28,11 @@ This is a simple addon that allow to your players to go to the tawn hall to make
   * [**HOT**] An incredible **blacklist system** to block unwanted names and **facilitate your administration**!
   * A **beautiful admin panel** to config the **blacklist system**
   * **Force** player to have a **proper** caligraphy (*configurable*)
+  * **Force** player to change his RPName (command : `gname_force <steamid>`)
 * **Works with the latest DarkRP version !**
 
 ## Planned features
 * **Themes** system (change theme colors, blur & more)
-* **Admin** force player name change
 * Propose your ideas : https://github.com/Gabyfle/gName-Changer/issues (label : Feature Request)
 
 ## Screenshots

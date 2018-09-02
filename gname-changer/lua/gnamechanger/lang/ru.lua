@@ -17,7 +17,8 @@ gNameChanger.Language = {
 	noEnts = "Нет энтити для защиты.",
 	entsSaved = "Все NPC были сохранены в {{path}}",
 	configSaved = "The configuration has been saved.",
-	nameBlacklist = "The name you entered is blacklisted."
+	nameBlacklist = "The name you entered is blacklisted.",
+	forced = "An administrator forced you to change your name.",
 	--[[-------------------------------------------------------------------------
 	CLIENT SIDE TRANSLATIONS
 	---------------------------------------------------------------------------]]

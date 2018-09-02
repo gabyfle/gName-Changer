@@ -1,11 +1,9 @@
 --[[---------------------------------------------------------------------------
-
                         gName-Changer | LANGUAGE FILE
                 This addon has been created & released for free
                                    by Gaby
                 Steam : https://steamcommunity.com/id/EpicGaby
                 Translated by: https://steamcommunity.com/id/svensis/
-
 -----------------------------------------------------------------------------]]
 gNameChanger.Language = {
 	--[[-------------------------------------------------------------------------
@@ -14,10 +12,11 @@ gNameChanger.Language = {
 	needWait = "Jums vajag gaidīt {{delay}} sekundes pirms vārda maiņas.",
 	needMoney = "Atvaino! Tev nepietiek nauda lai nomainītu vārdu!",
 	needRight = "Atvaino! Tev nav autorizācija lai izmantotu šo komandu.",
-	noEnts = "There is no entity to safeguard.", // debugging should be kept the same
+	noEnts = "There is no entity to safeguard.",
 	entsSaved = "Visi NPC tika saglabāti {{path}}",
 	configSaved = "Konfigurācija ir saglabāta.",
 	nameBlacklist = "Vārds ko jus ievadijāt nav atļauts.",
+	forced = "An administrator forced you to change your name.",
 	--[[-------------------------------------------------------------------------
 	CLIENT SIDE TRANSLATIONS
 	---------------------------------------------------------------------------]]

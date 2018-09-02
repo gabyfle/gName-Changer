@@ -9,7 +9,6 @@
 util.AddNetworkString("gNameChanger:Admin:Panel")
 util.AddNetworkString("gNameChanger:Admin:Save")
 
-
 --[[-------------------------------------------------------------------------
 	void AdminPanel(Player ply) : 
 		Send configuration table to the client
@@ -28,15 +27,46 @@ function gNameChanger:AdminPanel(ply)
 end
 
 --[[-------------------------------------------------------------------------
+	void AdminForce(Player ply, table<string> steamid) : 
+		Force a player to change his rp name
+---------------------------------------------------------------------------]]
+function gNameChanger:AdminForce(ply, steamid)
+	if not self:getRights(ply) then return end
+	--if #steamid > 1 then
+	--	ply:ChatPrint("Usage : !<command> <steamid>")
+	--	DarkRP.notify(ply, 1, 15, "Bad usage of the command.")
+	--	return
+	--end
+
+	target = player.GetBySteamID(steamid[1])
+
+	if not target then
+		DarkRP.notify(ply, 1, 15, "There isn't any player with the SteamID : " .. steamid[1] .. ".")
+		return		
+	end
+
+	target.gNameChangerForce = true
+	target:ChatPrint("An administrator forced you to change your RPName.")
+
+	self:firstSpawnSendPanel(target)
+end
+--[[-------------------------------------------------------------------------
 	string AdminChat(Player ply, string text) : 
 		Return empty string
-		[If player get rights, launch AdminPanel() func]
+		[If player get rights, launch the right function]
 ---------------------------------------------------------------------------]]
 function gNameChanger:AdminChat(ply, text)
-	if (string.lower(text) == "!" .. self.adminMenu) then
+	if (string.find(text, "!" .. self.adminMenu)) then
 		if not self:getRights(ply) then return "" end
 
 		self:AdminPanel(ply)
+
+		return ""
+	elseif (string.find(text, "!" .. self.adminForce)) then
+		if not self:getRights(ply) then return "" end
+
+		local steamid = self:getArgs(text)
+		self:AdminForce(ply, steamid)
 
 		return ""
 	end
@@ -62,7 +92,7 @@ function gNameChanger:AdminSave(ply)
 	DarkRP.notify(ply, 3, 15, self.Language.configSaved)
 end
 
-hook.Add("PlayerSay", "gNameChanger:AdminMenu", function(ply, text, team)
+hook.Add("PlayerSay", "gNameChanger:Admin:Menu", function(ply, text, team)
 	text = gNameChanger:AdminChat(ply, text)
 
 	return text
