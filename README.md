@@ -32,7 +32,6 @@ This is a simple addon that allow to your players to go to the tawn hall to make
 * **Works with the latest DarkRP version !**
 
 ## Planned features
-* **Themes** system (change theme colors, blur & more)
 * Propose your ideas : https://github.com/Gabyfle/gName-Changer/issues (label : Feature Request)
 
 ## Screenshots

@@ -32,11 +32,11 @@ end
 ---------------------------------------------------------------------------]]
 function gNameChanger:AdminForce(ply, steamid)
 	if not self:getRights(ply) then return end
-	--if #steamid > 1 then
-	--	ply:ChatPrint("Usage : !<command> <steamid>")
-	--	DarkRP.notify(ply, 1, 15, "Bad usage of the command.")
-	--	return
-	--end
+	if #steamid > 1 then
+		ply:ChatPrint("Usage : !<command> <steamid>")
+		DarkRP.notify(ply, 1, 15, "Bad usage of the command.")
+		return
+	end
 
 	target = player.GetBySteamID(steamid[1])
 

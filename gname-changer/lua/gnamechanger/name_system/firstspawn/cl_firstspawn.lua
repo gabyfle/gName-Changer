@@ -8,9 +8,9 @@
 -----------------------------------------------------------------------------]]
 local function mainDerma()	
 	local w, h = ScrW(), 180
-
-	local blur = Material("pp/blurscreen")
+	
 	local function DrawBlur(panel, amount)
+		local blur = Material("pp/blurscreen")
 		local x, y = panel:LocalToScreen(0, 0)
 		local scrW, scrH = ScrW(), ScrH()
 		surface.SetDrawColor(255, 255, 255)
@@ -20,7 +20,7 @@ local function mainDerma()
 			blur:Recompute()
 			render.UpdateScreenEffectTexture()
 			surface.DrawTexturedRect(x * -1, y * -1, scrW, scrH)
-	    end
+		end
 	end
 
 	if w < 480 then
@@ -65,6 +65,7 @@ local function mainDerma()
 		  frame:Center()
 		  frame:MakePopup()
 		  function frame:Paint(w, h)
+		  		if gNameChanger.activeBlur then DrawBlur(self, 10) end
 		  		surface.SetDrawColor(gNameChanger.dermaColor.r, gNameChanger.dermaColor.g, gNameChanger.dermaColor.b, 200)
 		  		surface.DrawRect(0, 0, w, h)
 		  end

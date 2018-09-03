@@ -89,7 +89,7 @@ function gNameChanger:LangMatch(stringLang)
 		["price"] = self.price,
 		["device"] = self.device
 	}
-	if CLIENT then vars["plyname"] = ply:Nick() end
+	if CLIENT then vars["plyname"] = ply:getDarkRPVar("rpname") end
 	
 	local pattern = "{{(.-)}}"
 

@@ -7,7 +7,7 @@
 
 -----------------------------------------------------------------------------]]
 
-gNameChanger = gNameChanger or {}
+gNameChanger = gNameChanger or {} -- DO NOT TOUCH THIS LINE
 
 --------------------------]]--
 --[[ General Informations ]]--
@@ -57,7 +57,7 @@ gNameChanger.device = "$"
 gNameChanger.caligraphy = true -- If true, names like géRaRD, gérard or GérArD will be changed to Gérard
 
 -- First spawn name change (asking player to change his name on his first spawn ?)
-gNameChanger.firstSpawn = false -- true = activated | false = disabled
+gNameChanger.firstSpawn = true -- true = activated | false = disabled
 
 -- Active / Disable global notifications for name changing
 gNameChanger.globalNotify = true -- true = activated | false = disabled
@@ -66,6 +66,11 @@ gNameChanger.globalNotify = true -- true = activated | false = disabled
 --[[ Windows Theme Settings ]]--
 --------------------------------
 	--[[ GUI ]]--
+-- Blur : active blur on GUI panels (don't change overlay blur)
+gNameChanger.activeBlur = false -- true = activated | false = disabled
+-- Blur opacity level, 0 = transparent, 255 = non-transparent
+gNameChanger.blurOpacity = 180 -- Blur alpha value. RECOMMENDED : Between 150 and 200
+
 -- Main colors (background)
 gNameChanger.dermaColor = Color(29, 53, 87) -- Got a color in hexagonal form? http://www.color-hex.com
 -- Font color

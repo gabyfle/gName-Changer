@@ -6,6 +6,7 @@
 				Steam : https://steamcommunity.com/id/EpicGaby
 
 -----------------------------------------------------------------------------]]
+gNameChanger.NPCs = gNameChanger.NPCs or {}
 local path = "gabyfle-rpname/npc_rpname_pos_" .. game.GetMap() .. ".txt"
 
 --[[-------------------------------------------------------------------------
@@ -98,10 +99,9 @@ end
 function gNameChanger:Save(ply)
 	if not self:getRights(ply) then return end
 
-	local entities = ents.FindByClass("npc_gname_changer") -- All npc_gname_changer entities
 
 	-- If there isn't any npc_gname_changer entity
-	local number = #entities
+	local number = #gNameChanger.NPCs
 	if number == 0 then
 		DarkRP.notify(ply, 1, 6, self:LangMatch(self.Language.noEnts))
 
@@ -110,13 +110,12 @@ function gNameChanger:Save(ply)
 	
 	local data = {}
 	-- Writing all npc_gname_changer positions to data table, and then convert into JSON to write it in data file
-	for k, v in pairs(entities) do
+	for k, v in pairs(gNameChanger.NPCs) do
 		data[k] = { pos = v:GetPos(), angle = v:GetAngles() }
 	end
 	-- Write JSON converted table to data file
 	file.Write(path, util.TableToJSON(data))
 
-<<<<<<< HEAD
 	DarkRP.notify(ply, 3, 6, self:LangMatch(self.Language.entsSaved))
 end
 
@@ -150,7 +149,3 @@ hook.Add("EntityRemoved", "gNameChanger:NPC:remove:EntList", function(ent)
 		table.remove(gNameChanger.NPCs, findKey(gNameChanger.NPCs, ent))
 	end
 end)
-=======
-	DarkRP.notify(ply, 3, 15, self:LangMatch(self.Language.entsSaved))
-end
->>>>>>> parent of 57969c7... Code optimization

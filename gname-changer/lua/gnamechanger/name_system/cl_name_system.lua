@@ -11,9 +11,30 @@ local function inQuad(fraction, beginning, change)
 	return change * (fraction ^ 2) + beginning
 end
 
-local function nameDerma(panel, ply, npc)
+-- Draw Blur function, used to draw blurred panels
+local function DrawBlur(panel, amount)
+	if gNameChanger.activeBlur then
+		local blur = Material("pp/blurscreen")
+		local x, y = panel:LocalToScreen(0, 0)
+		local scrW, scrH = ScrW(), ScrH()
+		surface.SetDrawColor(255, 255, 255)
+		surface.SetMaterial(blur)
+		for i = 1, 3 do
+			blur:SetFloat("$blur", (i / 3) * (amount or 6))
+			blur:Recompute()
+			render.UpdateScreenEffectTexture()
+			surface.DrawTexturedRect(x * -1, y * -1, scrW, scrH)
+		end
+	end
+end
+
+local function nameDerma(ply, npc)
 	
 	local w, h = ScrW(), 230
+
+	local a = 255
+
+	if gNameChanger.activeBlur then a = gNameChanger.blurOpacity end
 
 	if w < 480 then
 		w = 380
@@ -33,14 +54,16 @@ local function nameDerma(panel, ply, npc)
 		  frame:Center()
 		  frame:MakePopup()
 		  function frame:Paint(w, h)
-		  		surface.SetDrawColor(gNameChanger.dermaColor.r, gNameChanger.dermaColor.g, gNameChanger.dermaColor.b, 200)
+		  		DrawBlur(self, 10)
+		  		surface.SetDrawColor(gNameChanger.dermaColor.r, gNameChanger.dermaColor.g, gNameChanger.dermaColor.b, a - 100)
 		  		surface.DrawRect(0, 0, w, h)
 		  end
 		  local frameAnim = Derma_Anim("FadeIn", frame, function(panel, anim, delta, data)
-		  		function panel:Paint(w, h)
-					surface.SetDrawColor(gNameChanger.dermaColor.r, gNameChanger.dermaColor.g, gNameChanger.dermaColor.b, inQuad(delta, 200, 255))
+			  function panel:Paint(w, h)
+			  		DrawBlur(self, 10)
+					surface.SetDrawColor(gNameChanger.dermaColor.r, gNameChanger.dermaColor.g, gNameChanger.dermaColor.b, inQuad(delta, 0, a))
 					surface.DrawRect(0, 0, w, h)
-				end
+			  end
 		  end)
 		  frameAnim:Start(0.25)
 		  frame.Think = function(self)
@@ -119,12 +142,6 @@ local function nameDerma(panel, ply, npc)
 							net.WriteString(lastText:GetValue())
 						net.SendToServer()
 
-						-- Updating the name
-						local childs = panel:GetChildren()
-						childs[6]:SetText(gNameChanger:LangMatch(gNameChanger.Language.welcome))
-						childs[6]:SizeToContents()
-
-						panel:SetVisible(true)
 						frame:Close()
 					end
 			  end
@@ -140,13 +157,16 @@ local function nameDerma(panel, ply, npc)
 					surface.DrawRect(0, 0, w, h)
 			  end
 			  closeBut.DoClick = function()
-			  		panel:SetVisible(true)
 					frame:Close()
 			  end
 end
 
 local function mainDerma()
-	local w, h, ply = ScrW(), 250, LocalPlayer()
+	local w, h, ply = ScrW(), 180, LocalPlayer()
+
+	local a = 255
+
+	if gNameChanger.activeBlur then a = gNameChanger.blurOpacity end
 
 	if w < 480 then
 		w = 380
@@ -166,14 +186,16 @@ local function mainDerma()
 		  frame:Center()
 		  frame:MakePopup()
 		  function frame:Paint(w, h)
-		  		surface.SetDrawColor(gNameChanger.dermaColor.r, gNameChanger.dermaColor.g, gNameChanger.dermaColor.b, 0)
+		  		DrawBlur(self, 10)
+		  		surface.SetDrawColor(gNameChanger.dermaColor.r, gNameChanger.dermaColor.g, gNameChanger.dermaColor.b, a - 100)
 		  		surface.DrawRect(0, 0, w, h)
 		  end
 		  local frameAnim = Derma_Anim("FadeIn", frame, function(panel, anim, delta, data)
-		  		function panel:Paint(w, h)
-					surface.SetDrawColor(gNameChanger.dermaColor.r, gNameChanger.dermaColor.g, gNameChanger.dermaColor.b, inQuad(delta, 0, 255))
+			  function panel:Paint(w, h)
+			  		DrawBlur(self, 10)
+					surface.SetDrawColor(gNameChanger.dermaColor.r, gNameChanger.dermaColor.g, gNameChanger.dermaColor.b, inQuad(delta, 0, a))
 					surface.DrawRect(0, 0, w, h)
-				end
+			  end
 		  end)
 		  frameAnim:Start(0.25)
 		  frame.Think = function(self)
@@ -203,7 +225,7 @@ local function mainDerma()
 
 	local changeBut = vgui.Create("DButton", frame)
 		  changeBut:SetText(gNameChanger.Language.wantChange)
-		  changeBut:SetPos(w / 50, h / 2.8)
+		  changeBut:SetPos(10, h - 100)
 		  changeBut:SetSize(w - 20, 40)
 		  changeBut:SetColor(gNameChanger.dermaFontColor)
 		  changeBut:SetFont("roboto-light")
@@ -212,8 +234,8 @@ local function mainDerma()
 				surface.DrawRect(0, 0, w, h)
 		  end
 		  changeBut.DoClick = function()
-		  		frame:SetVisible(false)
-		  		nameDerma(frame, ply, npc)
+		  		frame:Close()
+		  		nameDerma(ply, npc)
 		  end
 
 	local closeBut = vgui.Create("DButton", frame)
