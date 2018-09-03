@@ -1,12 +1,9 @@
 --[[---------------------------------------------------------------------------
-
 				        gName-Changer | SERVER SIDE CODE
 				This addon has been created & released for free
 								   by Gaby
 				Steam : https://steamcommunity.com/id/EpicGaby
-
 -----------------------------------------------------------------------------]]
-gNameChanger.NPCs = gNameChanger.NPCs or {}
 local path = "gabyfle-rpname/npc_rpname_pos_" .. game.GetMap() .. ".txt"
 
 --[[-------------------------------------------------------------------------
@@ -99,9 +96,10 @@ end
 function gNameChanger:Save(ply)
 	if not self:getRights(ply) then return end
 
+	local entities = ents.FindByClass("npc_gname_changer") -- All npc_gname_changer entities
 
 	-- If there isn't any npc_gname_changer entity
-	local number = #gNameChanger.NPCs
+	local number = #entities
 	if number == 0 then
 		DarkRP.notify(ply, 1, 6, self:LangMatch(self.Language.noEnts))
 
@@ -110,7 +108,7 @@ function gNameChanger:Save(ply)
 	
 	local data = {}
 	-- Writing all npc_gname_changer positions to data table, and then convert into JSON to write it in data file
-	for k, v in pairs(gNameChanger.NPCs) do
+	for k, v in pairs(entities) do
 		data[k] = { pos = v:GetPos(), angle = v:GetAngles() }
 	end
 	-- Write JSON converted table to data file
@@ -118,34 +116,3 @@ function gNameChanger:Save(ply)
 
 	DarkRP.notify(ply, 3, 6, self:LangMatch(self.Language.entsSaved))
 end
-
---[[-------------------------------------------------------------------------
-	number findKey(table haystack, any needle) : 
-		Returns the key of the given value
----------------------------------------------------------------------------]]
-local function findKey(haystack, needle)
-	for key, v in pairs(haystack) do
-		if v == needle then
-			return key
-		end
-	end
-end -- Will be a global function if needed in future
-
---[[-------------------------------------------------------------------------
-	gNameChanger:NPC:add:EntList
-	Adds the created NPCs to gNameChangers.NPCs table
----------------------------------------------------------------------------]]
-hook.Add("OnEntityCreated", "gNameChanger:NPC:add:EntList", function(ent)
-	if ent:GetClass() == "npc_gname_changer" then
-		table.insert(gNameChanger.NPCs, ent)
-	end
-end)
---[[-------------------------------------------------------------------------
-	gNameChanger:NPC:remove:EntList
-	Delete the removed NPCs from gNameChangers.NPCs table
----------------------------------------------------------------------------]]
-hook.Add("EntityRemoved", "gNameChanger:NPC:remove:EntList", function(ent)
-	if ent:GetClass() == "npc_gname_changer" then
-		table.remove(gNameChanger.NPCs, findKey(gNameChanger.NPCs, ent))
-	end
-end)
