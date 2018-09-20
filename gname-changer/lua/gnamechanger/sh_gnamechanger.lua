@@ -80,7 +80,6 @@ end
 function gNameChanger:LangMatch(stringLang)
 	-- Used vars
 	local path = "gabyfle-rpname/npc_rpname_pos_" .. game.GetMap() .. ".txt"
-	if CLIENT then ply = LocalPlayer() end
 	
 	local vars = {
 		["delay"] = self.delay,
@@ -89,7 +88,10 @@ function gNameChanger:LangMatch(stringLang)
 		["price"] = self.price,
 		["device"] = self.device
 	}
-	if CLIENT then vars["plyname"] = ply:getDarkRPVar("rpname") end
+	if CLIENT then
+		ply = LocalPlayer()
+		vars["plyname"] = ply:Nick()
+	end
 	
 	local pattern = "{{(.-)}}"
 
