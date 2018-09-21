@@ -44,6 +44,7 @@ function gNameChanger:Init()
 			-- Modifying some DarkRP commands
 			DarkRP.removeChatCommand("rpname") -- Deactivate /rpname
 			DarkRP.removeChatCommand("name") -- Deactivate /name
+			DarkRP.removeChatCommand("nick") -- Deactivate /nick
 		end)
 		
 		print(" *=======================* ")
