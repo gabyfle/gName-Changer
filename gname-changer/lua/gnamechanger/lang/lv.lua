@@ -16,7 +16,7 @@ gNameChanger.Language = {
 	entsSaved = "Visi NPC tika saglabāti {{path}}",
 	configSaved = "Konfigurācija ir saglabāta.",
 	nameBlacklist = "Vārds ko jus ievadijāt nav atļauts.",
-	forced = "An administrator forced you to change your name.",
+	forced = "Administrātors lika jums nomainīt vārdu!",
 	--[[-------------------------------------------------------------------------
 	CLIENT SIDE TRANSLATIONS
 	---------------------------------------------------------------------------]]
