@@ -90,7 +90,12 @@ function gNameChanger:LangMatch(stringLang)
 	}
 	if CLIENT then
 		ply = LocalPlayer()
-		vars["plyname"] = ply:Nick()
+		
+		if IsValid(ply) and ply:IsPlayer() then
+			vars["plyname"] = ply:Nick()
+		else
+			vars["plyname"] = "Unknown"
+		end
 	end
 	
 	local pattern = "{{(.-)}}"
