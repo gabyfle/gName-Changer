@@ -15,8 +15,8 @@ gNameChanger.Language = {
 	noEnts = "There is no entity to safeguard.",
 	entsSaved = "Visi NPC tika saglabāti {{path}}",
 	configSaved = "Konfigurācija ir saglabāta.",
-	nameBlacklist = "Vārds, ko jus ievadijāt nav atļauts.",
-	forced = "Administrātors lika jums nomainīt vārdu!",
+	nameBlacklist = "Vārds ko jus ievadijāt nav atļauts.",
+	forced = "An administrator forced you to change your name.",
 	--[[-------------------------------------------------------------------------
 	CLIENT SIDE TRANSLATIONS
 	---------------------------------------------------------------------------]]

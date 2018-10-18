@@ -9,12 +9,28 @@
 util.AddNetworkString("gNameChanger:SPAWN:Panel")
 util.AddNetworkString("gNameChanger:SPAWN:Name")
 
+--[[-------------------------------------------------------------------------
+	void firstLoad(void) : 
+		Loads the first name change system
+---------------------------------------------------------------------------]]
+function gNameChanger:firstLoad()
+
+end
+
+--[[-------------------------------------------------------------------------
+	void firstSpawnSendPanel(Player ply) : 
+		Send the net : gNameChanger:SPAWN:Panel to the player
+---------------------------------------------------------------------------]]
 function gNameChanger:firstSpawnSendPanel(ply)
 	net.Start("gNameChanger:SPAWN:Panel")
 		--
 	net.Send(ply)
 end
 
+--[[-------------------------------------------------------------------------
+	void firstSpawnCheck(len, Player ply) : 
+		Check if the player succeeded to change his name
+---------------------------------------------------------------------------]]
 function gNameChanger:firstSpawnCheck(len, ply)
 	if not IsValid(ply) or not ply:IsPlayer() then return end
 	if not ply.gNameChangerForce then

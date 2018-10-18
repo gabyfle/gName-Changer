@@ -69,6 +69,10 @@ function gNameChanger:Load()
 	if not file.Exists("gabyfle-rpname/blacklist.txt", "DATA") then
 		file.Write("gabyfle-rpname/blacklist.txt", "{\"names\":\"\",\"active\":false}") -- Create it if not
 	end
+	-- Checking if players_name.txt exists
+	if not file.Exists("gabyfle-rpname/players_name.txt", "DATA") then
+		file.Write("gabyfle-rpname/players_name.txt", "")
+	end
 
 	-- Loading blacklist configuration
 	self:BlacklistLoad()
