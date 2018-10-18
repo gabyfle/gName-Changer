@@ -10,11 +10,25 @@ util.AddNetworkString("gNameChanger:SPAWN:Panel")
 util.AddNetworkString("gNameChanger:SPAWN:Name")
 
 --[[-------------------------------------------------------------------------
-	void firstLoad(void) : 
+	void alreadyChanged(Player ply) : 
 		Loads the first name change system
 ---------------------------------------------------------------------------]]
-function gNameChanger:firstLoad()
+function gNameChanger:alreadyChanged(ply)
+	local filename = "gabyfle-rpname/players_name.txt"
+	local steamid = ply:SteamID()
+	local pattern = "[^;]+"
 
+	local data = file.Read(filename) -- Getting SteamIDs lists
+
+	for id in string.gmatch(data, pattern) do
+		if steamid == id then
+			return true
+		end
+	end
+
+
+	file.Append(filename, steamid .. ";") -- Writing the new player in the file
+	return false
 end
 
 --[[-------------------------------------------------------------------------
@@ -51,7 +65,7 @@ net.Receive("gNameChanger:SPAWN:Name", function(len, ply)
 end)
 
 hook.Add("PlayerInitialSpawn", "gNameChanger:SPAWN:Hook", function(ply)
-	if gNameChanger.firstSpawn then
+	if gNameChanger.firstSpawn and not gNameChanger:alreadyChanged(ply) then
 		gNameChanger:firstSpawnSendPanel(ply)
 	end
 end)

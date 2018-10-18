@@ -37,9 +37,9 @@ gNameChanger.communityDesc = "Welcome to our biggest DarkRP server. Have fun and
 
 -- Permission to access to the command
 gNameChanger.canUseCommands = {
+    ["operator"] = true,
     ["superadmin"] = true,
-    ["admin"] = true,
-    ["user"] = true
+    ["admin"] = true
 }
 -- The command to save NPCs
 gNameChanger.saveCommand = "gname_save_all" -- WARNING : using same command has an other addon may causes conflicts
