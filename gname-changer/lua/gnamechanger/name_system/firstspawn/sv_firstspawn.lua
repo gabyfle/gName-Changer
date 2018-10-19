@@ -26,8 +26,6 @@ function gNameChanger:alreadyChanged(ply)
 		end
 	end
 
-
-	file.Append(filename, steamid .. ";") -- Writing the new player in the file
 	return false
 end
 
@@ -57,6 +55,7 @@ function gNameChanger:firstSpawnCheck(len, ply)
 		self:firstSpawnSendPanel(ply)
 	else
 		if ply.gNameChangerForce then ply.gNameChangerForce = false	end
+		file.Append("gabyfle-rpname/players_name.txt", ply:SteamID() .. ";") -- Writing the new player in the file
 	end	
 end
 
