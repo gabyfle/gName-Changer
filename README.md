@@ -68,6 +68,35 @@ It had to looks like :
 
 ![Looks like](https://image.noelshack.com/fichiers/2018/34/2/1534853151-addon.png)
 
+## Developers
+gNameChanger allows you to add some actions to his principal frame.
+Here, a short example of how you can add new actions :
+
+- First, you'll need to have a function that can be executed from an other addon :
+
+```lua
+function printHi()
+  print("Hi")
+end
+
+hook.Add("gunlicencetesting", "testingthings", printHi)
+```
+
+- Then, you can easily add an action by doing something like this, in the `gNameChanger.actions` table (located in config file) :
+
+```lua
+    ["gunlicence"] = {
+        buttonText = "I want to buy a gun license!",
+        buttonColor = Color(51, 25, 86),
+        action = function() 
+            hook.Run("gunlicencetesting")
+        end
+    }
+```
+This will create a new button, and will rearrange the display of the frame : 
+
+![New action button](https://steamuserimages-a.akamaihd.net/ugc/948475103688537646/8A07B55E04CC955B1856129DF8A5401751B2987B/)
+
 ## Configuration
 You can easily config your addon, by modifiying the "*gname_changer_config.lua*".
 To do this, just go to :

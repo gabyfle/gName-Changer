@@ -13,14 +13,14 @@ gNameChanger = gNameChanger or {} -- DO NOT TOUCH THIS LINE
 --[[ General Informations ]]--
 --[[--------------------------
 
-	--[ About License ]--
+    --[ About License ]--
 
 This addon  has  been  released  totally  for  free,  for  DarkRP  servers  owners.
 In  case  of any  reuse,  reloading of  the source code  of  this addon,  I  kindly
 ask you to  credit  me,  as  specified  in  the  license  under  which  this  addon
 is distributed (see: https://github.com/Gabyfle/gName-Changer/blob/master/LICENSE).
 
-	--[ Commiting an Issue ]--
+    --[ Commiting an Issue ]--
 
 If you find a bug or an  exploit while  using gNameChanger, please let us  know  at
 https://github.com/Gabyfle/gName-Changer/issues, we will be very happy to help you.
@@ -51,7 +51,7 @@ gNameChanger.adminForce = "gname_force" -- WARNING : using same command has an o
 -- Language setting
 gNameChanger.lang = "en" -- Available languages : "fr", "en", "ru", "lv"
 -- Device
-gNameChanger.device = "$"
+gNameChanger.device = "€"
 
 -- Force good caligraphy
 gNameChanger.caligraphy = true -- If true, names like géRaRD, gérard or GérArD will be changed to Gérard
@@ -60,14 +60,14 @@ gNameChanger.caligraphy = true -- If true, names like géRaRD, gérard or GérAr
 gNameChanger.firstSpawn = true -- true = activated | false = disabled
 
 -- Active / Disable global notifications for name changing
-gNameChanger.globalNotify = true -- true = activated | false = disabled
+gNameChanger.globalNotify = false -- true = activated | false = disabled
 
 --------------------------------
 --[[ Windows Theme Settings ]]--
 --------------------------------
-	--[[ GUI ]]--
+    --[[ GUI ]]--
 -- Blur : active blur on GUI panels (don't change overlay blur)
-gNameChanger.activeBlur = false -- true = activated | false = disabled
+gNameChanger.activeBlur = true -- true = activated | false = disabled
 -- Blur opacity level, 0 = transparent, 255 = non-transparent
 gNameChanger.blurOpacity = 180 -- Blur alpha value. RECOMMENDED : Between 150 and 200
 
@@ -75,7 +75,7 @@ gNameChanger.blurOpacity = 180 -- Blur alpha value. RECOMMENDED : Between 150 an
 gNameChanger.dermaColor = Color(29, 53, 87) -- Got a color in hexagonal form? http://www.color-hex.com
 -- Font color
 gNameChanger.dermaFontColor = Color(241, 250, 238) -- Got a color in hexagonal form? http://www.color-hex.com
-	--[[ 3D2D ]]--
+    --[[ 3D2D ]]--
 -- 3D2D CAM Background color
 gNameChanger.camColor = Color(29, 53, 87, 230) -- Got a color in hexagonal form? http://www.color-hex.com
 -- Font color
@@ -97,6 +97,25 @@ gNameChanger.model = "models/gman.mdl" -- Default GMAN model
 -- The price players will pay to change their name
 gNameChanger.price = 1000
 -- Minimum delay between two name change (in seconds)
-gNameChanger.delay = 0 -- Obviously, 0 cancels the delay
+gNameChanger.delay = 120 -- Obviously, 0 cancels the delay
 -- Maximum distance to access to the NPC (in units)
 gNameChanger.distance = 300
+
+----------------------------
+--[[ Developers section ]]--
+----------------------------
+-- Adding actions to Secretary frame
+gNameChanger.actions = {
+
+    --[[ See README.md to get an example (https://github.com/Gabyfle/gName-Changer/blob/master/README.md) ]]--
+
+    --[[
+    ["gunlicence"] = {
+        buttonText = "I want to buy a gun license!",
+        buttonColor = Color(51, 25, 86),
+        action = function() 
+            hook.Run("gunlicencetesting")
+        end
+    }--
+
+}
