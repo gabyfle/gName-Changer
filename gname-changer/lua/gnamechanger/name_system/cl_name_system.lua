@@ -260,6 +260,7 @@ local function mainDerma()
         end
 
         button.DoClick = function()
+            frame:Close()
             v.action()
         end
 
