@@ -32,7 +32,7 @@ end
 ---------------------------------------------------------------------------]]
 function gNameChanger:AdminForce(ply, steamid)
 	if not self:getRights(ply) then return end
-	if #steamid > 1 then
+	if #steamid > 1 or steamid[1] == nil then
 		ply:ChatPrint("Usage : !<command> <steamid>")
 		DarkRP.notify(ply, 1, 15, "Bad usage of the command.")
 		return

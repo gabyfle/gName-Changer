@@ -116,6 +116,6 @@ gNameChanger.actions = {
         action = function() 
             hook.Run("gunlicencetesting")
         end
-    }--
+    }]]--
 
 }
