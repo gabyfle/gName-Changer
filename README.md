@@ -29,6 +29,7 @@ This is a simple addon that allow to your players to go to the tawn hall to make
   * A **beautiful admin panel** to config the **blacklist system**
   * **Force** player to have a **proper** caligraphy (*configurable*)
   * **Force** player to change his RPName (command : `gname_force <steamid>`)
+* **Fits** developers requirements, by allowing them to add things easily, and by having a *well-indented and commented* code
 * **Works with the latest DarkRP version !**
 
 ## Planned features
