@@ -50,8 +50,6 @@ gNameChanger.adminForce = "gname_force" -- WARNING : using same command has an o
 
 -- Language setting
 gNameChanger.lang = "en" -- Available languages : "fr", "en", "ru", "lv"
--- Device
-gNameChanger.device = "€"
 
 -- Force good caligraphy
 gNameChanger.caligraphy = true -- If true, names like géRaRD, gérard or GérArD will be changed to Gérard
