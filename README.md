@@ -33,6 +33,8 @@ This is a simple addon that allow to your players to go to the tawn hall to make
 * **Works with the latest DarkRP version !**
 
 ## Planned features
+* Add an option to force the player to change his identity when he dies
+* When setting the ``globalNotify`` to ``false``, it would be great that the user himself can see a notification.
 * Propose your ideas : https://github.com/Gabyfle/gName-Changer/issues (label : Feature Request)
 
 ## Screenshots
