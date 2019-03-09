@@ -48,7 +48,7 @@ function gNameChanger:AdminForce(ply, steamid)
     target.gNameChangerForce = true
     target:ChatPrint("An administrator forced you to change your RPName.")
 
-    self:firstSpawnSendPanel(target)
+    self:forceNameSendPanel(target)
 end
 --[[-------------------------------------------------------------------------
     string AdminChat(Player ply, string text) : 

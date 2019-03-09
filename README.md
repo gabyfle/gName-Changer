@@ -12,12 +12,13 @@ This is a simple addon that allow to your players to go to the tawn hall to make
 [![](https://img.youtube.com/vi/MT9mKqKGYrE/0.jpg)](http://www.youtube.com/watch?v=MT9mKqKGYrE "Click to play on Youtube.com")
 
 ## Features
-* **First spawn** name change request *[* **BETA** *]*
-  * Configurable (*active* / *disable*)
-  * **Nice** blurred overlay, with community name and description
 * **Easy** setup
   * [**HOT**] **Save** the NPCs position! (command: `gname_save_all` [configurable])
   * A **complete** config file : change *colors*, *models* and *more* !
+* **First spawn** name change request *[* **BETA** *]*
+  * Configurable (*active* / *disable*)
+  * **Nice** blurred overlay, with community name and description
+* **Force** the player to change his identity **when he dies**
 * A **nice UI**
   * **Clean**, **elegant** and **beautiful** dermas
   * **Smooth animations**
@@ -33,7 +34,6 @@ This is a simple addon that allow to your players to go to the tawn hall to make
 * **Works with the latest DarkRP version !**
 
 ## Planned features
-* Add an option to force the player to change his identity when he dies
 * When setting the ``globalNotify`` to ``false``, it would be great that the user himself can see a notification.
 * Propose your ideas : https://github.com/Gabyfle/gName-Changer/issues (label : Feature Request)
 

@@ -25,6 +25,10 @@ is distributed (see: https://github.com/Gabyfle/gName-Changer/blob/master/LICENS
 If you find a bug or an  exploit while  using gNameChanger, please let us  know  at
 https://github.com/Gabyfle/gName-Changer/issues, we will be very happy to help you.
 
+    --[ Other ]--
+
+Default free "Information" icon made by Good Ware @ https://www.flaticon.com
+
 --------------------------
 --[[ General Settings ]]--
 --------------------------
@@ -56,6 +60,8 @@ gNameChanger.caligraphy = true -- If true, names like géRaRD, gérard or GérAr
 
 -- First spawn name change (asking player to change his name on his first spawn ?)
 gNameChanger.firstSpawn = true -- true = activated | false = disabled
+-- On death name change (asking player to change his name when he die ?)
+gNameChanger.reSpawn = true -- true = activated | false = disabled
 
 -- Active / Disable global notifications for name changing
 gNameChanger.globalNotify = false -- true = activated | false = disabled
@@ -78,6 +84,9 @@ gNameChanger.dermaFontColor = Color(241, 250, 238) -- Got a color in hexagonal f
 gNameChanger.camColor = Color(29, 53, 87, 230) -- Got a color in hexagonal form? http://www.color-hex.com
 -- Font color
 gNameChanger.camFontColor = Color(241, 250, 238) -- Got a color in hexagonal form? http://www.color-hex.com
+
+-- Information icon
+gNameChanger.infoIcon = "materials/gnamechanger/information.png"
 
 ---------------------------
 --[[ SOME FUNNY COLORS ]]--

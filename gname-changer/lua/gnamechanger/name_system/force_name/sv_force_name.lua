@@ -30,12 +30,12 @@ function gNameChanger:alreadyChanged(ply)
 end
 
 --[[-------------------------------------------------------------------------
-    void firstSpawnSendPanel(Player ply) : 
+    void forceNameSendPanel(Player ply) : 
         Send the net : gNameChanger:SPAWN:Panel to the player
 ---------------------------------------------------------------------------]]
-function gNameChanger:firstSpawnSendPanel(ply)
+function gNameChanger:forceNameSendPanel(ply)
     net.Start("gNameChanger:SPAWN:Panel")
-        --
+
     net.Send(ply)
 end
 
@@ -52,11 +52,32 @@ function gNameChanger:firstSpawnCheck(len, ply)
 
     local success = self:rpNameChange(len, ply, true, false)
     if not success then
-        self:firstSpawnSendPanel(ply)
+        self:forceNameSendPanel(ply)
     else
-        if ply.gNameChangerForce then ply.gNameChangerForce = false end
-        file.Append("gabyfle-rpname/players_name.txt", ply:SteamID() .. ";") -- Writing the new player in the file
+        if ply.gNameChangerForce then ply.gNameChangerForce = false return end
+        if ply.gNameLastNameChange then file.Append("gabyfle-rpname/players_name.txt", ply:SteamID() .. ";") end-- Writing the new player in the file
     end 
+end
+--[[-------------------------------------------------------------------------
+    bool isAttackerPlayer(Player attacker) : 
+        true   | if the player is dead because of another player
+        false  | if not
+---------------------------------------------------------------------------]]
+function gNameChanger:isAttackerPlayer(attacker)
+    return IsValid(attacker) and attacker:IsPlayer()
+end
+
+--[[-------------------------------------------------------------------------
+    void onDeathCheck(Player victim, Entity inflictor, Player attacker) : 
+        Check if the player is dead because of another player, if yes, launch gNameChanger:forceNameSendPanel
+---------------------------------------------------------------------------]]
+function gNameChanger:onDeathCheck(victim, inflictor, attacker)
+    if not gNameChanger.reSpawn then return end
+    if not IsValid(victim) and victim:IsPlayer() then return end
+
+    if self:isAttackerPlayer(attacker) then
+        self:forceNameSendPanel(victim)
+    end
 end
 
 net.Receive("gNameChanger:SPAWN:Name", function(len, ply)
@@ -65,6 +86,10 @@ end)
 
 hook.Add("PlayerInitialSpawn", "gNameChanger:SPAWN:Hook", function(ply)
     if gNameChanger.firstSpawn and not gNameChanger:alreadyChanged(ply) then
-        gNameChanger:firstSpawnSendPanel(ply)
+        gNameChanger:forceNameSendPanel(ply)
     end
+end)
+
+hook.Add("PlayerDeath", "gNameChanger:DEATH:Hook", function(victim, inflictor, attacker)
+    gNameChanger:onDeathCheck(victim, inflictor, attacker)
 end)
