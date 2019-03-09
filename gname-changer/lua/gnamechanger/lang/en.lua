@@ -36,5 +36,6 @@ gNameChanger.Language = {
     blacklist = "Blacklisted words",
     activeList = "Active blacklist",
     chooseName = "NAME SELECTION",
-    chooseBut = "That's my name, I think."
+    chooseBut = "That's my name, I think.",
+    killed = "You've been killed. You have to choose a new name."
 }

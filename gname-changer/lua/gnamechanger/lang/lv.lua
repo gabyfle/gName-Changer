@@ -35,5 +35,6 @@ gNameChanger.Language = {
     blacklist = "Neatļautie vārdi.",
     activeList = "Aktīvie neatļautie vārdi.",
     chooseName = "VĀRDA IZVĒLE",
-    chooseBut = "Tas ir mans vārds."
+    chooseBut = "Tas ir mans vārds.",
+    killed = "You've been killed. You have to choose a new name."
 }

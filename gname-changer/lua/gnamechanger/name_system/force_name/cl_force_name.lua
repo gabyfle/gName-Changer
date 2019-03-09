@@ -145,7 +145,7 @@ local function mainDerma()
                         background:Remove()
                     end
               end
-    if LocalPlayer():Health() <= 0 then -- Doesn't work if player use "kill" command
+    if IsValid(LocalPlayer()) and LocalPlayer():Health() <= 0 then -- Doesn't work if player use "kill" command
         local framePosX, framePosY = frame:GetPos()
         local killed = vgui.Create("DPanel", background)
               killed:SetSize(w, 50)
@@ -160,7 +160,7 @@ local function mainDerma()
                     surface.DrawTexturedRect(5, 5, 40, 40)
               end
         local killedText = vgui.Create("DLabel", killed)
-              killedText:SetText("You've been killed. You have to choose a new name.")
+              killedText:SetText(gNameChanger.Language.killed)
               killedText:SetColor(gNameChanger.dermaFontColor)
               killedText:SetFont("roboto-light")
               killedText:SizeToContents()
