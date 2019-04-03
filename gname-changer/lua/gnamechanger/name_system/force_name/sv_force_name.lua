@@ -47,7 +47,7 @@ function gNameChanger:firstSpawnCheck(len, ply)
     if not IsValid(ply) or not ply:IsPlayer() then return end
     if not ply.gNameChangerForce then
         if not self.firstSpawn then return end
-        if ply.gNameLastNameChange then return end -- Already used a name change
+        if ply.gNameLastNameChange then return end
     end
 
     local success = self:rpNameChange(len, ply, true, false)
@@ -55,8 +55,8 @@ function gNameChanger:firstSpawnCheck(len, ply)
         self:forceNameSendPanel(ply)
     else
         if ply.gNameChangerForce then ply.gNameChangerForce = false return end
-        if ply.gNameLastNameChange then file.Append("gabyfle-rpname/players_name.txt", ply:SteamID() .. ";") end-- Writing the new player in the file
-    end 
+        if ply.gNameLastNameChange then file.Append("gabyfle-rpname/players_name.txt", ply:SteamID() .. ";") end
+    end
 end
 --[[-------------------------------------------------------------------------
     bool isAttackerPlayer(Player attacker) : 
@@ -71,7 +71,7 @@ end
     void onDeathCheck(Player victim, Entity inflictor, Player attacker) : 
         Check if the player is dead because of another player, if yes, launch gNameChanger:forceNameSendPanel
 ---------------------------------------------------------------------------]]
-function gNameChanger:onDeathCheck(victim, inflictor, attacker)
+function gNameChanger:onDeathCheck(victim, _, attacker)
     if not gNameChanger.reSpawn then return end
     if not IsValid(victim) and victim:IsPlayer() then return end
 

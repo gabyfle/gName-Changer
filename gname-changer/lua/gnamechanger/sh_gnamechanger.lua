@@ -46,7 +46,7 @@ function gNameChanger:Init()
             DarkRP.removeChatCommand("name") -- Deactivate /name
             DarkRP.removeChatCommand("nick") -- Deactivate /nick
         end)
-        
+
         print(" *=======================* ")
         print("|   RPName Changer Addon  |")
         print("|===-->  Eat broccoli     |")
@@ -81,7 +81,7 @@ end
 function gNameChanger:LangMatch(stringLang)
     -- Used vars
     local path = "gabyfle-rpname/npc_rpname_pos_" .. game.GetMap() .. ".txt"
-    
+
     local vars = {
         ["delay"] = self.delay,
         ["path"] = path,
@@ -90,14 +90,14 @@ function gNameChanger:LangMatch(stringLang)
     }
     if CLIENT then
         ply = LocalPlayer()
-        
+
         if IsValid(ply) and ply:IsPlayer() then
             vars["plyname"] = ply:Nick()
         else
             vars["plyname"] = "Unknown"
         end
     end
-    
+
     local pattern = "{{(.-)}}"
 
     return string.gsub(stringLang, pattern, vars)

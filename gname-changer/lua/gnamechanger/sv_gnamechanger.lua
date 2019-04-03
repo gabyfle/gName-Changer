@@ -57,19 +57,15 @@ end
         Create data folder, data files, and load entities pos data files.
 ---------------------------------------------------------------------------]]
 function gNameChanger:Load()
-    -- Checking if data folder of rpname exist
     if not file.IsDir("gabyfle-rpname", "DATA") then
         file.CreateDir("gabyfle-rpname") -- Create it if not
     end
-    -- Now checking if npc_rpname_pos.txt (file with all NPCs pos) exists
     if not file.Exists(path, "DATA") then
         file.Write(path, "") -- Create it if not
     end
-    -- Checking if blacklist.txt exists
     if not file.Exists("gabyfle-rpname/blacklist.txt", "DATA") then
         file.Write("gabyfle-rpname/blacklist.txt", "{\"names\":\"\",\"active\":false}") -- Create it if not
     end
-    -- Checking if players_name.txt exists
     if not file.Exists("gabyfle-rpname/players_name.txt", "DATA") then
         file.Write("gabyfle-rpname/players_name.txt", "")
     end
@@ -78,10 +74,10 @@ function gNameChanger:Load()
     self:BlacklistLoad()
 
     -- Loading entities
-    local data = file.Read(path)    
+    local data = file.Read(path)
     local tb = util.JSONToTable(data)
 
-    if not tb then return end -- If JSONToTable fails or if there isn't saved npcs
+    if not tb then return end
 
     -- Loading and spawning NPCs
     for _, v in pairs(tb) do
@@ -99,23 +95,18 @@ end
 ---------------------------------------------------------------------------]]
 function gNameChanger:Save(ply)
     if not self:getRights(ply) then return end
-
-    local entities = ents.FindByClass("npc_gname_changer") -- All npc_gname_changer entities
-
-    -- If there isn't any npc_gname_changer entity
+    local entities = ents.FindByClass("npc_gname_changer")
     local number = #entities
     if number == 0 then
         DarkRP.notify(ply, 1, 6, self:LangMatch(self.Language.noEnts))
 
         return
     end
-    
     local data = {}
     -- Writing all npc_gname_changer positions to data table, and then convert into JSON to write it in data file
     for k, v in pairs(entities) do
         data[k] = { pos = v:GetPos(), angle = v:GetAngles() }
     end
-    -- Write JSON converted table to data file
     file.Write(path, util.TableToJSON(data))
 
     DarkRP.notify(ply, 3, 6, self:LangMatch(self.Language.entsSaved))

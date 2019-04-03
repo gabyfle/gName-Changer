@@ -42,7 +42,7 @@ function gNameChanger:AdminForce(ply, steamid)
 
     if not target then
         DarkRP.notify(ply, 1, 15, "There isn't any player with the SteamID : " .. steamid[1] .. ".")
-        return      
+        return
     end
 
     target.gNameChangerForce = true

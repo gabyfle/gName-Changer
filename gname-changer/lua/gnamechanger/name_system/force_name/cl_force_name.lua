@@ -6,9 +6,9 @@
                 Steam : https://steamcommunity.com/id/EpicGaby
 
 -----------------------------------------------------------------------------]]
-local function mainDerma()  
+local function mainDerma() 
     local w, h = ScrW(), 180
-    
+
     local function DrawBlur(panel, amount)
         local blur = Material("pp/blurscreen")
         local x, y = panel:LocalToScreen(0, 0)
@@ -146,7 +146,7 @@ local function mainDerma()
                     end
               end
     if IsValid(LocalPlayer()) and LocalPlayer():Health() <= 0 then -- Doesn't work if player use "kill" command
-        local framePosX, framePosY = frame:GetPos()
+        local _, framePosY = frame:GetPos()
         local killed = vgui.Create("DPanel", background)
               killed:SetSize(w, 50)
               killed:SetPos(0, framePosY + h)
@@ -164,7 +164,7 @@ local function mainDerma()
               killedText:SetColor(gNameChanger.dermaFontColor)
               killedText:SetFont("roboto-light")
               killedText:SizeToContents()
-              killedText:Center()        
+              killedText:Center()
     end
 end
 
