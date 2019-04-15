@@ -55,7 +55,7 @@ function gNameChanger:firstSpawnCheck(len, ply)
         self:forceNameSendPanel(ply)
     else
         if ply.gNameChangerForce then ply.gNameChangerForce = false return end
-        if ply.gNameLastNameChange then file.Append("gabyfle-rpname/players_name.txt", ply:SteamID() .. ";") end
+        if not ply.gNameLastNameChange then file.Append("gabyfle-rpname/players_name.txt", ply:SteamID() .. ";") end
     end
 end
 --[[-------------------------------------------------------------------------

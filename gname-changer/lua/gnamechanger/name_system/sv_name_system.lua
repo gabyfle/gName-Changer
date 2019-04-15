@@ -54,7 +54,7 @@ function gNameChanger:canChange(ply, npc)
 
     -- Player is launching derma without using entity (or player is too far from entity)
     if npc == true then
-        if not ply.usedNPC or not (ply.usedNPC:GetPos():DistToSqr(ply:GetPos()) < self.distance^2) then
+        if not ply.usedNPC or ply.usedNPC:GetPos():DistToSqr(ply:GetPos()) >= self.distance^2 then
             return false
         end
     end
@@ -63,7 +63,7 @@ function gNameChanger:canChange(ply, npc)
     if not ply.gNameLastNameChange then return true end
     local possible = ply.gNameLastNameChange + self.delay
 
-    if CurTime() < possible then 
+    if CurTime() < possible then
         DarkRP.notify(ply, 1, 6, self:LangMatch(self.Language.needWait))
         return false
     end
@@ -76,12 +76,12 @@ end
         Changes the darkrp Name of a player given in arg
         return true if name was changed succesfully, false if not
 ---------------------------------------------------------------------------]]
-function gNameChanger:rpNameChange(len, ply, first, npc)
+function gNameChanger:rpNameChange(_, ply, first, npc)
     if first == nil then first = false end
     if npc == nil then npc = true end
 
     if not self:canChange(ply, npc) then return false end
-    
+
     local firstname = net.ReadString()
     local lastname = net.ReadString()
 
