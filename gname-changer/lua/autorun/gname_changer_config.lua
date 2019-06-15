@@ -7,9 +7,9 @@
 
 gNameChanger = gNameChanger or {} -- DO NOT TOUCH THIS LINE
 
---------------------------]]--
+------------------------------
 --[[ General Informations ]]--
---[[--------------------------
+------------------------------
 
     --[ About License ]--
 
