@@ -3,12 +3,12 @@
                 This addon has been created & released for free
                                    by Gaby
                 Steam : https://steamcommunity.com/id/EpicGaby
------------------------------------------------------------------------------
+------------------------------------------------------------------------]]-----
 
 gNameChanger = gNameChanger or {} -- DO NOT TOUCH THIS LINE
 
 ------------------------------
---[ General Informations ]--
+--[[ General Informations ]--
 ------------------------------
 
     --[ About License ]--
