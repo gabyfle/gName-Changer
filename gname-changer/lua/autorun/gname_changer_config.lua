@@ -3,12 +3,12 @@
                 This addon has been created & released for free
                                    by Gaby
                 Steam : https://steamcommunity.com/id/EpicGaby
----------------------------------------------------------------------------]]--
+-----------------------------------------------------------------------------
 
 gNameChanger = gNameChanger or {} -- DO NOT TOUCH THIS LINE
 
 ------------------------------
---[[ General Informations ]]--
+--[ General Informations ]--
 ------------------------------
 
     --[ About License ]--
@@ -28,8 +28,8 @@ https://github.com/Gabyfle/gName-Changer/issues, we will be very happy to help y
 Default free "Information" icon made by Good Ware @ https://www.flaticon.com
 
 --------------------------
---[[ General Settings ]]--
---------------------------
+--[ General Settings ]--
+-----------------------]]-
 -- Your community name
 gNameChanger.communityName = "Gabyfle's Addons"
 -- Community name font familly
