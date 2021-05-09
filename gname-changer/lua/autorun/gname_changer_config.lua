@@ -29,7 +29,7 @@ Default free "Information" icon made by Good Ware @ https://www.flaticon.com
 
 --------------------------
 --[ General Settings ]--
------------------------]]-
+-----------------------]]--
 -- Your community name
 gNameChanger.communityName = "Gabyfle's Addons"
 -- Community name font familly
