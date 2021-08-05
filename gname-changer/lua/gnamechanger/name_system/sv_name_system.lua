@@ -103,23 +103,21 @@ function gNameChanger:rpNameChange(_, ply, first, npc)
     local name = firstname .. " " .. lastname
 
     if first == true then
-        local success = false
+
         DarkRP.retrieveRPNames(name, function(taken)
             if taken then
+                gNameChanger:forceNameSendPanel(ply)
                 DarkRP.notify(ply, 1, 5, DarkRP.getPhrase("unable", "RPname", DarkRP.getPhrase("already_taken")))
-                return false
             else
                 DarkRP.storeRPName(ply, name)
                 ply:setDarkRPVar("rpname", name)
                 if gNameChanger.globalNotify then
                     DarkRP.notifyAll(2, 6, DarkRP.getPhrase("rpname_changed", ply:SteamName(), name))
                 end
-                success = true
-                return true
             end
         end)
 
-        return success
+        return true
     else
         if not ply:canAfford(self.price) then
             DarkRP.notify(ply, 1, 6, self:LangMatch(self.Language.needMoney))
@@ -127,8 +125,8 @@ function gNameChanger:rpNameChange(_, ply, first, npc)
         else
             DarkRP.retrieveRPNames(name, function(taken)
                 if taken then
+                    gNameChanger:forceNameSendPanel(ply)
                     DarkRP.notify(ply, 1, 5, DarkRP.getPhrase("unable", "RPname", DarkRP.getPhrase("already_taken")))
-                    return false
                 else
                     ply:addMoney(-self.price)
 
@@ -137,9 +135,10 @@ function gNameChanger:rpNameChange(_, ply, first, npc)
                     if gNameChanger.globalNotify then
                         DarkRP.notifyAll(2, 6, DarkRP.getPhrase("rpname_changed", ply:SteamName(), name))
                     end
-                    return true
                 end
             end)
+
+            return true
         end
     end
 
